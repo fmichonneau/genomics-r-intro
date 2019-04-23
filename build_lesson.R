@@ -20,12 +20,6 @@ build_lesson <- function() {
     BuildLesson$new()
 }
 
-
-format_url_errors <- function(res_links, idx) {
-    paste0("  - broken url:", res_links$urlname[idx], "\n",
-           "          from:", res_links$parentname[idx], "\n")
-}
-
 CheckLinks <- R6::R6Class(
      "CheckLinks", inherit = TicStep,
      public = list(
