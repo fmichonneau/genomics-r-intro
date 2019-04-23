@@ -14,7 +14,11 @@ get_stage("deploy") %>%
   add_step(build_lesson())
 
 get_stage("after_deploy") %>%
-  add_step(check_links())
+  add_step(checker::check_jekyll_links(
+    site_root = "_rendered",
+    recursive= TRUE,
+    only_with_issues = FALSE,
+    show_summary = TRUE))
 
 if (Sys.getenv("id_rsa") != "") {
   # pkgdown documentation can be built optionally. Other example criteria:
