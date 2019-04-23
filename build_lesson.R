@@ -40,6 +40,10 @@ CheckLinks <- R6::R6Class(
          timeout <- as.difftime(timeout, units = "secs")
          deadline <- Sys.time() + timeout
 
+         withr::with_dir("_rendered", {
+           processx::run("bundle", "install")
+         })
+
          jkyl <- withr::with_dir("_rendered", {
            processx::process$new(
              "bundle",
