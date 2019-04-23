@@ -30,7 +30,6 @@ CheckLinks <- R6::R6Class(
          ## new folder that GitHub picks up to render (so the dynamically
          ## generated links such as "Edit on GitHub" are functional), here we
          ## actually need to generate the website so we can test the links.
-         on.exit(system("rm -rf _rendered/_site"))
 
          remotes::install_cran(c("withr", "processx"))
          remotes::install_github("fmichonneau/checker")
@@ -40,9 +39,10 @@ CheckLinks <- R6::R6Class(
          timeout <- as.difftime(timeout, units = "secs")
          deadline <- Sys.time() + timeout
 
-         withr::with_dir("_rendered", {
+         bundle_install <- withr::with_dir("_rendered", {
            processx::run("bundle", "install")
          })
+         message(bundle_install$stdout)
 
          jkyl <- withr::with_dir("_rendered", {
            processx::process$new(
