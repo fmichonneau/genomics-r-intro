@@ -1,10 +1,10 @@
 source("build_lesson.R")
 
-get_stage("before_install") %>%
-  add_code_step(remotes::install_github("fmichonneau/checker", force = TRUE))
+#get_stage("before_install")
 
 get_stage("install") %>%
-  add_code_step(remotes::install_github("hadley/requirements")) %>%
+  add_code_step(remotes::install_github("hadley/requirements"))  %>%
+  add_code_step(remotes::install_github("fmichonneau/checker", force = TRUE)) %>%
   add_code_step(remotes::install_cran(requirements:::req_dir("_episodes_rmd"))) %>%
   add_code_step(remotes::install_cran("fs")) %>%
   add_code_step(remotes::install_cran(c("withr", "processx")))
@@ -18,7 +18,8 @@ get_stage("after_deploy") %>%
       site_root = "_rendered",
       recursive= TRUE,
       only_with_issues = FALSE,
-      show_summary = TRUE)
+      show_summary = TRUE,
+      verbose = TRUE)
   )
 
 if (Sys.getenv("id_rsa") != "") {
