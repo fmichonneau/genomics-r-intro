@@ -1,14 +1,13 @@
 source("build_lesson.R")
 
-## get_stage("before_install") %>%
-##   add_code_step(update.packages(ask = FALSE))
+get_stage("before_install") %>%
+  add_code_step(remotes::install_github("fmichonneau/checker", force = TRUE))
 
 get_stage("install") %>%
   add_code_step(remotes::install_github("hadley/requirements")) %>%
   add_code_step(remotes::install_cran(requirements:::req_dir("_episodes_rmd"))) %>%
   add_code_step(remotes::install_cran("fs")) %>%
-  add_code_step(remotes::install_cran(c("withr", "processx"))) %>%
-  add_code_step(remotes::install_github("fmichonneau/checker", force = TRUE))
+  add_code_step(remotes::install_cran(c("withr", "processx")))
 
 get_stage("deploy") %>%
   add_step(build_lesson())
