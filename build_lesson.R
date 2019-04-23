@@ -49,11 +49,13 @@ CheckLinks <- R6::R6Class(
 
          while (jkyl$is_alive() && (now <- Sys.time()) < deadline) {
            poll_time <- as.double(deadline - now, units = "secs") * 1000
+           message("waiting: ", poll_time, " ms.")
            jkyl$poll_io(as.integer(poll_time))
            lines <- jkyl$read_output_lines()
+           message(cat(lines, sep = "\n"))
            if (any(grepl("server running", lines, ignore.case = TRUE))) {
              message("Jekyll is running just fine.")
-             return(jkyl)
+             break
            } else {
              message("jekyll isn't running quite yet.")
            }
