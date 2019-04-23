@@ -50,10 +50,11 @@ CheckLinks <- R6::R6Class(
              c("exec", "jekyll", "serve", "--port", "4002"),
              stdout = "|", stderr = "|")
          })
+         message(jkyl$read_output_lines())
 
          while (jkyl$is_alive() && (now <- Sys.time()) < deadline) {
            poll_time <- as.double(deadline - now, units = "secs") * 1000
-           message("waiting: ", poll_time, " ms.")
+           message("poll time: ", poll_time, " ms.")
            jkyl$poll_io(as.integer(poll_time))
            lines <- jkyl$read_output_lines()
            message(cat(lines, sep = "\n"))
