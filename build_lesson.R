@@ -35,37 +35,65 @@ CheckLinks <- R6::R6Class(
          ## actually need to generate the website so we can test the links.
          on.exit(system("rm -rf _rendered/_site"))
 
-         system("cd _rendered && rvm 2.5.1 do ruby -S jekyll build")
+         remotes::install_cran(c("withr", "processx"))
+         remotes::install_github("fmichonneau/checker")
+         ##processx::run("bundle", "update")
 
-         ## ignore JS file not included as part of rmarkdown
-         ## ignore email addresses
-         ## ignore embedded images
-         link_status <- system("linkchecker --ignore-url=external.+js --ignore-url=^mailto: --ignore-url=^data: --no-warnings  --file-output=csv/link_res.csv _rendered/_site")
-         message("linkchecker exit code: ", link_status)
-
-         ## Because URLs can contain #, we first need to remove the commented
-         ## lines in the generated CSV file. We can't rely on the comment
-         ## argument of the read_delim function, see
-         ## https://github.com/tidyverse/readr/issues/828
-         csv_links_files <- readLines("link_res.csv")
-         writeLines(csv_links_files[grepl("^[^#]", csv_links_files)],
-                    con = "link_res_clean.csv",
-                    sep = "\n")
-
-         ## write output to CSV file and check error codes
-         ## stop only for 404s
-         res_links <- readr::read_delim("link_res_clean.csv", delim = ";")
-         unique(res_links$result)
-         res_404 <- grepl("^404|^gaierror", res_links$result)
-         other_errors <- grepl("error", res_links$result, ignore.case = TRUE)
-         if (any(other_errors))
-           warning("These links might be problematic: \n",
-                   format_url_errors(res_links, other_errors))
-         if (any(res_404))
-           stop("Some links are broken (check log to inspect): \n",
-                format_url_errors(res_links, res_404))
+         jkyl <- withr::with_dir("_rendered", {
+           processx::process$new(
+             "bundle",
+             c("exec", "jekyll", "serve", "--port", "4002"),
+             stdout = "|", stderr = "|")
          })
+         on.exit(jkyl$kill(), add = TRUE)
+
+         message("starting to wait ...", appendLF = FALSE)
+         jkyl$wait(5000)
+         message("done waiting.")
+
+         res_jekyll <- checker::check_links(
+           "_rendered/_site",
+           root_dir = "http://localhost:4002",
+           recursive= TRUE,
+           only_with_issues = FALSE,
+           show_summary = TRUE
+         )
+         
+         readr::write_csv(res_jekyll, "/tmp/genomics.csv")
+       })
 )
+
+## system("cd _rendered && rvm 2.5.1 do ruby -S jekyll build")
+
+## ## ignore JS file not included as part of rmarkdown
+## ## ignore email addresses
+## ## ignore embedded images
+## link_status <- system("linkchecker --ignore-url=external.+js --ignore-url=^mailto: --ignore-url=^data: --no-warnings  --file-output=csv/link_res.csv _rendered/_site")
+## message("linkchecker exit code: ", link_status)
+
+## ## Because URLs can contain #, we first need to remove the commented
+## ## lines in the generated CSV file. We can't rely on the comment
+## ## argument of the read_delim function, see
+## ## https://github.com/tidyverse/readr/issues/828
+## csv_links_files <- readLines("link_res.csv")
+## writeLines(csv_links_files[grepl("^[^#]", csv_links_files)],
+##   con = "link_res_clean.csv",
+##   sep = "\n")
+
+## ## write output to CSV file and check error codes
+## ## stop only for 404s
+## res_links <- readr::read_delim("link_res_clean.csv", delim = ";")
+## unique(res_links$result)
+## res_404 <- grepl("^404|^gaierror", res_links$result)
+## other_errors <- grepl("error", res_links$result, ignore.case = TRUE)
+## if (any(other_errors))
+##            warning("These links might be problematic: \n",
+##                    format_url_errors(res_links, other_errors))
+##          if (any(res_404))
+##            stop("Some links are broken (check log to inspect): \n",
+##                 format_url_errors(res_links, res_404))
+##          })
+## )
 
 check_links <- function() {
   CheckLinks$new()
