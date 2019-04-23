@@ -8,7 +8,8 @@ BuildLesson <- R6::R6Class(
       if (build_status > 0)
         stop("Error during building process")
 
-      file.remove(".gitignore")
+      if (inherits(ci(), "TravisCI")) file.remove(".gitignore")
+
       system("mkdir  _rendered")
       system("cp -r \`ls -A | grep -v '.git' | grep -v '_rendered' | grep -v '_site'\` _rendered")
     })
