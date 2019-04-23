@@ -5,7 +5,8 @@ source("build_lesson.R")
 
 get_stage("install") %>%
   add_code_step(remotes::install_github("hadley/requirements")) %>%
-  add_code_step(remotes::install_cran(requirements:::req_dir("_episodes_rmd")))
+  add_code_step(remotes::install_cran(requirements:::req_dir("_episodes_rmd"))) %>%
+  add_code_step(remotes::install_cran("fs"))
 
 get_stage("deploy") %>%
   add_step(build_lesson()) %>%
