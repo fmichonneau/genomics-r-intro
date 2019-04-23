@@ -14,7 +14,7 @@ BuildLesson <- R6::R6Class(
       system("cp -r \`ls -A | grep -v '.git' | grep -v '_rendered' | grep -v '_site'\` _rendered")
 
       message("Content of _rendered folder: ")
-      fs::dir_ls("_rendered", recursive = TRUE)
+      message(paste(as.character(fs::dir_ls("_rendered", recursive = TRUE)), collapse = "\n"))
     })
 )
 
