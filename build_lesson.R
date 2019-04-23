@@ -31,10 +31,6 @@ CheckLinks <- R6::R6Class(
          ## generated links such as "Edit on GitHub" are functional), here we
          ## actually need to generate the website so we can test the links.
 
-         remotes::install_cran(c("withr", "processx"))
-         remotes::install_github("fmichonneau/checker")
-         ##processx::run("bundle", "update")
-
          timeout <- 30 * 60
          timeout <- as.difftime(timeout, units = "secs")
          deadline <- Sys.time() + timeout
@@ -51,13 +47,9 @@ CheckLinks <- R6::R6Class(
              stdout = "|", stderr = "|")
          })
          message("is jekyll alive?:", as.character(jkyl$is_alive()))
-         message("jkyl: ", jkyl$as_ps_handle())
-         message("test: ", as.character((now <- Sys.time()) < deadline))
 
          while (jkyl$is_alive() && (now <- Sys.time()) < deadline) {
-           message("in while")
            poll_time <- as.double(deadline - now, units = "secs") * 1000
-           message("poll time: ", poll_time, " ms.")
            jkyl$poll_io(as.integer(poll_time))
            lines <- jkyl$read_output_lines()
            message(cat(lines, sep = "\n"))
@@ -69,9 +61,6 @@ CheckLinks <- R6::R6Class(
            }
          }
 
-         message("Content of _rendered folder: ")
-         message(paste(as.character(fs::dir_ls("_rendered", recursive = TRUE)), collapse = "\n"))
-
          on.exit(jkyl$kill(), add = TRUE)
 
          res_jekyll <- checker::check_links(
@@ -81,8 +70,7 @@ CheckLinks <- R6::R6Class(
            only_with_issues = FALSE,
            show_summary = TRUE
          )
-         
-         readr::write_csv(res_jekyll, "/tmp/genomics.csv")
+
        })
 )
 
