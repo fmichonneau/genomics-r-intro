@@ -40,19 +40,30 @@ CheckLinks <- R6::R6Class(
          remotes::install_github("fmichonneau/checker")
          ##processx::run("bundle", "update")
 
+         timeout <- 30
+         timeout <- as.difftime(timeout, units = "secs")
+         deadline <- Sys.time() + timeout
+
          jkyl <- withr::with_dir("_rendered", {
            processx::process$new(
              "bundle",
              c("exec", "jekyll", "serve", "--port", "4002"),
              stdout = "|", stderr = "|")
          })
+
+         while (jkyl$is_alive() && (now <- Sys.time()) < deadline) {
+           poll_time <- as.double(deadline - now, units = "secs") * 1000
+           jkyl$poll_io(as.integer(poll_time))
+           lines <- jkyl$read_output_lines()
+           if (any(grepl("server running", lines, ignore.case = TRUE))) {
+             message("Jekyll is running just fine.")
+             return(jkyl)
+           } else {
+             message("jekyll isn't running quite yet.")
+           }
+         }
+
          on.exit(jkyl$kill(), add = TRUE)
-
-         message("starting to wait ...", appendLF = FALSE)
-         jkyl$wait(5000)
-         message("done waiting.")
-
-         jkyl$read_output_lines()
 
          res_jekyll <- checker::check_links(
            "_rendered/_site",
