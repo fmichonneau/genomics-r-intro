@@ -8,7 +8,7 @@ get_stage("install") %>%
   add_code_step(remotes::install_cran(requirements:::req_dir("_episodes_rmd"))) %>%
   add_code_step(remotes::install_cran("fs")) %>%
   add_code_step(remotes::install_cran(c("withr", "processx"))) %>%
-  add_code_step(remotes::install_github("fmichonneau/checker"))
+  add_code_step(remotes::install_github("fmichonneau/checker", force = TRUE))
 
 get_stage("deploy") %>%
   add_step(build_lesson())
