@@ -35,7 +35,7 @@ CheckLinks <- R6::R6Class(
          remotes::install_github("fmichonneau/checker")
          ##processx::run("bundle", "update")
 
-         timeout <- 30
+         timeout <- 30 * 60
          timeout <- as.difftime(timeout, units = "secs")
          deadline <- Sys.time() + timeout
 
@@ -50,7 +50,8 @@ CheckLinks <- R6::R6Class(
              c("exec", "jekyll", "serve", "--port", "4002"),
              stdout = "|", stderr = "|")
          })
-         message(jkyl$read_output_lines())
+         message("is jekyll alive?:", as.character(jkyl$is_alive()))
+         message("jkyl: ", jkyl)
 
          while (jkyl$is_alive() && (now <- Sys.time()) < deadline) {
            poll_time <- as.double(deadline - now, units = "secs") * 1000
