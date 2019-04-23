@@ -12,6 +12,9 @@ BuildLesson <- R6::R6Class(
 
       system("mkdir  _rendered")
       system("cp -r \`ls -A | grep -v '.git' | grep -v '_rendered' | grep -v '_site'\` _rendered")
+
+      message("Content of _rendered folder: ")
+      fs::dir_ls("_rendered", recursive = TRUE)
     })
 )
 
@@ -24,6 +27,9 @@ CheckLinks <- R6::R6Class(
      "CheckLinks", inherit = TicStep,
      public = list(
        run = function() {
+         message("Content of _rendered folder: ")
+         fs::dir_ls("_rendered", recursive = TRUE)
+
          ## While build_lesson() merely copies the content of the repo into a
          ## new folder that GitHub picks up to render (so the dynamically
          ## generated links such as "Edit on GitHub" are functional), here we
@@ -45,6 +51,8 @@ CheckLinks <- R6::R6Class(
          message("starting to wait ...", appendLF = FALSE)
          jkyl$wait(5000)
          message("done waiting.")
+
+         jkyl$read_output_lines()
 
          res_jekyll <- checker::check_links(
            "_rendered/_site",
