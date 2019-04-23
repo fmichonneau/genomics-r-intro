@@ -51,9 +51,11 @@ CheckLinks <- R6::R6Class(
              stdout = "|", stderr = "|")
          })
          message("is jekyll alive?:", as.character(jkyl$is_alive()))
-         message("jkyl: ", jkyl)
+         message("jkyl: ", jkyl$as_ps_handle())
+         message("test: ", as.character((now <- Sys.time()) < deadline))
 
          while (jkyl$is_alive() && (now <- Sys.time()) < deadline) {
+           message("in while")
            poll_time <- as.double(deadline - now, units = "secs") * 1000
            message("poll time: ", poll_time, " ms.")
            jkyl$poll_io(as.integer(poll_time))
@@ -66,8 +68,6 @@ CheckLinks <- R6::R6Class(
              message("jekyll isn't running quite yet.")
            }
          }
-
-         message(jkyl$read_output_lines())
 
          message("Content of _rendered folder: ")
          message(paste(as.character(fs::dir_ls("_rendered", recursive = TRUE)), collapse = "\n"))
