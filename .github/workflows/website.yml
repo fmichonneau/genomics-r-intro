@@ -92,9 +92,11 @@ jobs:
           git status
 
       - name: Push site
-        if: ${{ github.event.push == 'true' && steps.check-rmd.outputs.count != 0 && github.ref == 'refs/head/main' }}
+        if: ${{ github.event.push == 'true' && steps.check-rmd.outputs.count != 0 && github.ref == 'refs/heads/main' }}
         run: |
           git checkout --orphan gh-pages
+          rm -rf .github/
+          rm -rf .bundle/
           git add .
           git commit -m "[GitHub Actions] render website"
           git remote -v
