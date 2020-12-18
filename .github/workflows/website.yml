@@ -82,25 +82,22 @@ jobs:
             eval sudo $cmd
           done < <(Rscript -e 'cat(remotes::system_requirements("ubuntu", "18.04"), sep = "\n")')
 
-      - run: make site
-
       - name: Setup Git
         if: ${{ steps.check-rmd.outputs.count != 0 }}
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git status
+          git checkout --orphan gha-rendering
+
+      - run: make site
 
       - name: Push site
         #if: ${{ github.event.push == 'true' && steps.check-rmd.outputs.count != 0 && github.ref == 'refs/heads/main' }}
         run: |
-          git checkout --orphan gha-rendering
           rm -rf .github/
           rm -rf .bundle/
           git add .
           git commit -m "[GitHub Actions] render website"
-          git remote -v
-          git status
           git push --force origin +gha-rendering:gh-pages
 
       - run: make lesson-check
