@@ -1,0 +1,964 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="last-modified" content="2020-12-18 15:56:59 +0000">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- meta "search-domain" used for google site search function google_search() -->
+    <meta name="search-domain" value="">
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/lesson.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/syntax.css" />
+     <link rel="stylesheet" type="text/css" href="../assets/css/fonts.css" />
+    <link rel="license" href="#license-info" />
+
+    
+
+
+
+    <!-- Favicons for everyone -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../assets/favicons/dc/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/favicons/dc/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/favicons/dc/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/favicons/dc/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="../assets/favicons/dc/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="../assets/favicons/dc/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="../assets/favicons/dc/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../assets/favicons/dc/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="../assets/favicons/dc/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="../assets/favicons/dc/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="../assets/favicons/dc/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../assets/favicons/dc/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="../assets/favicons/dc/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="Data Carpentry - Intro to R and RStudio for Genomics"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="../assets/favicons/dc/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="../assets/favicons/dc/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="../assets/favicons/dc/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="../assets/favicons/dc/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="../assets/favicons/dc/mstile-310x310.png" />
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+  <title>
+  Introducing R and RStudio IDE &ndash; Intro to R and RStudio for Genomics
+  </title>
+
+  </head>
+  <body>
+    
+
+
+<div class="panel panel-default life-cycle">
+  <div id="life-cycle" class="panel-body alpha">
+    This lesson is in the early stages of development (Alpha version)
+  </div>
+</div>
+
+
+
+
+
+    <div class="container">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      
+      
+      <a href="http://datacarpentry.org" class="pull-left">
+        <img class="navbar-logo" src="../assets/img/dc-icon-black.svg" alt="Data Carpentry logo" />
+      </a>
+      
+
+      
+      <a class="navbar-brand" href="../index.html">Home</a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+	
+        <li><a href="../CODE_OF_CONDUCT.html">Code of Conduct</a></li>
+
+        
+	
+        <li><a href="../setup.html">Setup</a></li>
+
+        
+        
+        <li class="dropdown">
+          <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            
+            <li><a href="../01-introduction/index.html">Introducing R and RStudio IDE</a></li>
+            
+            
+            <li><a href="../02-r-basics/index.html">R Basics</a></li>
+            
+            
+            <li><a href="../03-basics-factors-dataframes/index.html">R Basics continued - factors and data frames</a></li>
+            
+            
+            <li><a href="../04-dplyr/index.html">Aggregating and Analyzing Data with dplyr</a></li>
+            
+            
+            <li><a href="../05-data-visualization/index.html">Data Visualization with ggplot2</a></li>
+            
+            
+            <li><a href="../XX-knitr-markdown/index.html">Producing Reports With knitr</a></li>
+            
+	    <li role="separator" class="divider"></li>
+            <li><a href="../aio.html">All in one page (Beta)</a></li>
+          </ul>
+        </li>
+        
+	
+
+	
+	
+        <li class="dropdown">
+          <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extras <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../reference.html">Reference</a></li>
+            
+            
+            <li><a href="../about/index.html">About</a></li>
+            
+            
+            <li><a href="../discuss/index.html">Discussion</a></li>
+            
+            
+            <li><a href="../figures/index.html">Figures</a></li>
+            
+            
+            <li><a href="../guide/index.html">Instructor Notes</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+        <li><a href="../LICENSE.html">License</a></li>
+	
+	
+	<li><a href="/edit//_episodes_rmd/01-introduction.Rmd" data-checker-ignore>Improve this page <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></li>
+	
+	
+      </ul>
+      <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
+        <div class="form-group">
+          <input type="text" id="google-search" placeholder="Search..." aria-label="Google site search">
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+      
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+  <div class="col-xs-1">
+    <h3 class="text-left">
+      
+      <a href="../"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><span class="sr-only">lesson home</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-xs-10">
+    
+    <h3 class="maintitle"><a href="../">Intro to R and RStudio for Genomics</a></h3>
+    
+  </div>
+  <div class="col-xs-1">
+    <h3 class="text-right">
+      
+      <a href="../02-r-basics/index.html"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      
+    </h3>
+  </div>
+</div>
+
+<article>
+<div class="row">
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-10">
+    <h1 class="maintitle">Introducing R and RStudio IDE</h1>
+  </div>
+  <div class="col-md-1">
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<blockquote class="objectives">
+  <h2>Overview</h2>
+
+  <div class="row">
+    <div class="col-md-3">
+      <strong>Teaching:</strong> 30 min
+      <br/>
+      <strong>Exercises:</strong> 15 min
+    </div>
+    <div class="col-md-9">
+      <strong>Questions</strong>
+      <ul>
+	
+	<li><p>Why use R?</p>
+</li>
+	
+	<li><p>Why use RStudio and how does it differ from R?</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-9">
+      <strong>Objectives</strong>
+      <ul>
+	
+	<li><p>Know advantages of analyzing data in R</p>
+</li>
+	
+	<li><p>Know advantages of using RStudio</p>
+</li>
+	
+	<li><p>Create an RStudio project, and know the benefits of working within a project</p>
+</li>
+	
+	<li><p>Be able to customize the RStudio layout</p>
+</li>
+	
+	<li><p>Be able to locate and change the current working directory with <code class="language-plaintext highlighter-rouge">getwd()</code> and <code class="language-plaintext highlighter-rouge">setwd()</code></p>
+</li>
+	
+	<li><p>Compose an R script file containing comments and commands</p>
+</li>
+	
+	<li><p>Understand what an R function is</p>
+</li>
+	
+	<li><p>Locate help for an R function using <code class="language-plaintext highlighter-rouge">?</code>, <code class="language-plaintext highlighter-rouge">??</code>, and <code class="language-plaintext highlighter-rouge">args()</code></p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+</blockquote>
+
+<h2 id="getting-ready-to-use-r-for-the-first-time">Getting ready to use R for the first time</h2>
+
+<p>In this lesson we will take you through the very first things you need to get
+R working.</p>
+
+<blockquote class="callout">
+  <h2 id="tip-this-lesson-works-best-on-the-cloud">Tip: This lesson works best on the cloud</h2>
+
+  <p>Remember, these lessons assume we are using the pre-configured virtual machine
+instances provided to you at a genomics workshop. Much of this work could be
+done on your laptop, but we use instances to simplify workshop setup
+requirements, and to get you familiar with using the cloud (a common
+requirement for working with big data).
+Visit the <a href="http://www.datacarpentry.org/genomics-workshop/setup.html">Genomics Workshop setup page</a>
+for details on getting this instance running on your own, or for the info you
+need to do this on your own computer.</p>
+</blockquote>
+
+<h2 id="a-brief-history-of-r">A Brief History of R</h2>
+
+<p><a href="https://en.wikipedia.org/wiki/R_(programming_language)">R</a> has been around
+since 1995, and was created by Ross Ihaka and Robert Gentleman at the University
+of Auckland, New Zealand. R is based off the S programming language developed
+at Bell Labs and was developed to teach intro statistics. See this <a href="https://www.stat.auckland.ac.nz/~ihaka/downloads/Massey.pdf">slide deck</a>
+by Ross Ihaka for more info on the subject.</p>
+
+<h2 id="advantages-of-using-r">Advantages of using R</h2>
+
+<p>At more than 20 years old, R is fairly mature and <a href="https://www.tiobe.com/tiobe-index/r/">growing in popularity</a>. However, programming isn’t a popularity contest. Here are key advantages of
+analyzing data in R:</p>
+
+<ul>
+  <li><strong>R is <a href="https://en.wikipedia.org/wiki/Open-source_software">open source</a></strong>.
+This means R is free - an advantage if you are at an institution where you
+have to pay for your own MATLAB or SAS license. Open source, is important to
+your colleagues in parts of the world where expensive software in
+inaccessible. It also means that R is actively developed by a community (see
+<a href="https://www.r-project.org/">r-project.org</a>),
+and there are regular updates.</li>
+  <li><strong>R is widely used</strong>. Ok, maybe programming is a popularity contest. Because,
+R is used in many areas (not just bioinformatics), you are more likely to
+find help online when you need it. Chances are, almost any error message you
+run into, someone else has already experienced.</li>
+  <li><strong>R is powerful</strong>. R runs on multiple platforms (Windows/MacOS/Linux). It can
+ work with much larger datasets than popular spreadsheet programs like
+ Microsoft Excel, and because of its scripting capabilities is far more
+ reproducible. Also, there are thousands of available software packages for
+ science, including genomics and other areas of life science.</li>
+</ul>
+
+<blockquote class="discussion">
+  <h2 id="discussion-your-experience">Discussion: Your experience</h2>
+
+  <p>What has motivated you to learn R? Have you had a research question for which
+spreadsheet programs such as Excel have proven difficult to use, or where the
+size of the data set created issues?</p>
+</blockquote>
+
+<h2 id="introducing-rstudio-server">Introducing RStudio Server</h2>
+
+<p>In these lessons, we will be making use of a software called <a href="https://www.rstudio.com/products/RStudio/">RStudio</a>,
+an <a href="https://en.wikipedia.org/wiki/Integrated_development_environment">Integrated Development Environment (IDE)</a>.
+RStudio, like most IDEs, provides a graphical interface to R, making it more
+user-friendly, and providing dozens of useful features. We will introduce
+additional benefits of using RStudio as you cover the lessons. In this case,
+we are specifically using <a href="https://www.rstudio.com/products/RStudio/#Server">RStudio Server</a>,
+a version of RStudio that can be accessed in your web browser. RStudio Server
+has the same features of the Desktop version of RStudio you could download as
+standalone software.</p>
+
+<h2 id="log-on-to-rstudio-server">Log on to RStudio Server</h2>
+
+<p>Open a web browser and enter the IP address of your instance 
+(provided by your instructors), followed by
+<code class="language-plaintext highlighter-rouge">:8787</code>. For example, if your IP address was 123.45.67.89 your URL would be</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://123.45.67.89:8787
+</code></pre></div></div>
+
+<blockquote class="callout">
+  <h2 id="tip-make-sure-there-are-no-spaces-before-or-after-your-url-or">Tip: Make sure there are no spaces before or after your URL or</h2>
+  <p>your web browser may interpret it as a search query.</p>
+</blockquote>
+
+<p>You should now be looking at a page that will allow you to login to the RStudio
+server:</p>
+
+<p><img src="../fig/rstudio_login_screen.png" alt="rstudio default session" style="width: 1000px;" /></p>
+
+<p>Enter your user credentials and click <kbd>Sign In</kbd>. The credentials for
+the genomics Data Carpentry instances will be provided by your instructors.</p>
+
+<p>You should now see the RStudio interface:</p>
+
+<p><img src="../fig/rstudio_session_default.png" alt="rstudio default session" style="width:1000px;" /></p>
+
+<h2 id="create-an-rstudio-project">Create an RStudio project</h2>
+
+<p>One of the first benefits we will take advantage of in RStudio is something
+called an <strong>RStudio Project</strong>. An RStudio project allows you to more easily:</p>
+
+<ul>
+  <li>Save data, files, variables, packages, etc. related to a specific
+analysis project</li>
+  <li>Restart work where you left off</li>
+  <li>Collaborate, especially if you are using version control such as <a href="http://swcarpentry.github.io/git-novice/">git</a>.</li>
+</ul>
+
+<ol>
+  <li>To create a project, go to the <kbd>File</kbd> menu, and click <kbd>New Project...</kbd>.</li>
+</ol>
+
+<p><img src="../fig/new_project_window.png" alt="rstudio default session" style="width: 600px;" /></p>
+
+<ol>
+  <li>
+    <p>In the window that opens select <strong>New Directory</strong>, then <strong>New Project</strong>. For
+“Directory name:” enter <strong>dc_genomics_r</strong>. For “Create project as subdirectory of”,
+you may leave the default, which is your home directory “~”.</p>
+  </li>
+  <li>
+    <p>Finally click <kbd>Create Project</kbd>. In the “Files” tab of your output
+pane (more about the RStudio layout in a moment), you should see an RStudio
+ project file, <strong>dc_genomics_r.Rproj</strong>. All RStudio projects end with the
+ “<strong>.Rproj</strong>” file extension.</p>
+  </li>
+</ol>
+
+<blockquote class="callout">
+  <h2 id="tip-make-your-project-more-reproducible-with-packrat">Tip: Make your project more reproducible with Packrat</h2>
+  <p>One of the most wonderful and also frustrating aspects of working with R is
+managing packages. We will talk more about them, but packages (e.g. ggplot2)
+are add-ons that extend what you can do with R. Unfortunately it is very
+common that you may run into versions of R and/or R packages that are not
+compatible. This may make it difficult for someone to run your R script using
+their version of R or a given R package, and/or make it more difficult to run
+their scripts on your machine. <a href="https://rstudio.github.io/packrat/">Packrat</a>
+is an RStudio add-on that will associate your packages and project so that
+your work is more portable and reproducible. To turn on Packrat click on
+the <kbd>Tools</kbd> menu and select <kbd>Project Options</kbd>. Under
+<strong>Packrat</strong> check off “<strong>Use packrat with this project</strong>” and follow any
+installation instructions.</p>
+</blockquote>
+
+<h2 id="creating-your-first-r-script">Creating your first R script</h2>
+
+<p>Now that we are ready to start exploring R, we will want to keep a record of the
+commands we are using. To do this we can create an R script:</p>
+
+<p>Click the <kbd>File</kbd> menu and select <kbd>New File</kbd> and then
+<kbd>R Script</kbd>. Before we go any further, save your script by clicking the
+save/disk icon that is in the bar above the first line in the script editor, or
+click the <kbd>File</kbd> menu and select <kbd>save</kbd>. In the “Save File”
+window that opens, name your file <strong>“genomics_r_basics”</strong>. The new script
+<strong>genomics_r_basics.R</strong> should appear under “files” in the output pane. By
+convention, R scripts end with the file extension <strong>.R</strong>.</p>
+
+<h2 id="overview-and-customization-of-the-rstudio-layout">Overview and customization of the RStudio layout</h2>
+
+<p>Here are the major windows (or panes) of the RStudio
+environment:</p>
+
+<p><img src="../fig/rstudio_session_4pane_layout.png" alt="rstudio default session" style="width: 1000px;" /></p>
+
+<ul>
+  <li><strong>Source</strong>: This pane is where you will write/view R scripts. Some outputs
+(such as if you view a dataset using <code class="language-plaintext highlighter-rouge">View()</code>) will appear as a tab here.</li>
+  <li><strong>Console/Terminal</strong>: This is actually where you see the execution of
+commands. This is the same display you would see if you were using R at the
+command line without RStudio. You can work interactively (i.e. enter R
+commands here), but for the most part we will run a script (or lines in a
+script) in the source pane and watch their execution and output here. The
+“Terminal” tab give you access to the BASH terminal (the Linux operating
+system, unrelated to R).</li>
+  <li><strong>Environment/History</strong>: Here, RStudio will show you what datasets and
+objects (variables) you have created and which are defined in memory.
+You can also see some properties of objects/datasets such as their type
+and dimensions. The “History” tab contains a history of the R commands you’ve executed R.</li>
+  <li><strong>Files/Plots/Packages/Help</strong>: This multipurpose pane will show you the
+contents of directories on your computer. You can also use the “Files” tab to
+navigate and set the working directory. The “Plots” tab will show the output
+of any plots generated. In “Packages” you will see what packages are actively
+loaded, or you can attach installed packages. “Help” will display help files
+for R functions and packages.</li>
+</ul>
+
+<blockquote class="callout">
+  <h2 id="tip-uploads-and-downloads-in-the-cloud">Tip: Uploads and downloads in the cloud</h2>
+  <p>In the “Files” tab you can select a file and download it from your cloud
+instance (click the “more” button) to your local computer.
+Uploads are also possible.</p>
+</blockquote>
+
+<p>All of the panes in RStudio have configuration options. For example, you can
+minimize/maximize a pane, or by moving your mouse in the space between
+panes you can resize as needed. The most important customization options for
+pane layout are in the <kbd>View</kbd> menu. Other options such as font sizes,
+colors/themes, and more are in the <kbd>Tools</kbd> menu under
+<kbd>Global Options</kbd>.</p>
+
+<blockquote class="callout">
+  <h2 id="you-are-working-with-r">You are working with R</h2>
+  <p>Although we won’t be working with R at the terminal, there are lots of reasons
+to. For example, once you have written an RScript, you can run it at any Linux
+or Windows terminal without the need to start up RStudio. We don’t want
+you to get confused - RStudio runs R, but R is not RStudio. For more on
+running an R Script at the terminal see this <a href="https://swcarpentry.github.io/r-novice-inflammation/05-cmdline/">Software Carpentry lesson</a>.</p>
+</blockquote>
+
+<h2 id="getting-to-work-with-r-navigating-directories">Getting to work with R: navigating directories</h2>
+<p>Now that we have covered the more aesthetic aspects of RStudio, we can get to
+work using some commands. We will write, execute, and save the commands we
+learn in our <strong>genomics_r_basics.R</strong> script that is loaded in the Source pane.
+First, lets see what directory we are in. To do so, type the following command
+into the script:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">getwd</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div>
+
+<p>To execute this command, make sure your cursor is on the same line the command
+is written. Then click the <kbd>Run</kbd> button that is just above the first
+line of your script in the header of the Source pane.</p>
+
+<p>In the console, we expect to see the following output*:</p>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] "/home/dcuser/dc_genomics_r"
+</code></pre></div></div>
+
+<p>* Notice, at the Console, you will also see the instruction you executed
+above the output in blue.</p>
+
+<p>Since we will be learning several commands, we may already want to keep some
+short notes in our script to explain the purpose of the command. Entering a <code class="language-plaintext highlighter-rouge">#</code>
+before any line in an R script turns that line into a comment, which R will
+not try to interpret as code. Edit your script to include a comment on the
+purpose of commands you are learning, e.g.:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># this command shows the current working directory</span><span class="w">
+</span><span class="n">getwd</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div>
+
+<blockquote class="challenge">
+  <h2 id="exercise-work-interactively-in-r">Exercise: Work interactively in R</h2>
+
+  <p>What happens when you try to enter the <code class="language-plaintext highlighter-rouge">getwd()</code> command in the Console pane?</p>
+
+  <blockquote class="solution">
+    <h2 id="solution">Solution</h2>
+    <p>You will get the same output you did as when you ran <code class="language-plaintext highlighter-rouge">getwd()</code> from the
+source. You can run any command in the Console, however, executing it from
+the source script will make it easier for us to record what we have done,
+and ultimately run an entire script, instead of entering commands one-by-one.</p>
+  </blockquote>
+</blockquote>
+
+<p>For the purposes of this exercise we want you to be in the directory <code class="language-plaintext highlighter-rouge">"/home/dcuser/R_data"</code>.
+What if you weren’t? You can set your home directory using the <code class="language-plaintext highlighter-rouge">setwd()</code>
+command. Enter this command in your script, but <em>don’t run</em> this yet.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># This sets the working directory</span><span class="w">
+</span><span class="n">setwd</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div>
+
+<p>You may have guessed, you need to tell the <code class="language-plaintext highlighter-rouge">setwd()</code> command
+what directory you want to set as your working directory. To do so, inside of
+the parentheses, open a set of quotes. Inside the quotes enter a <code class="language-plaintext highlighter-rouge">/</code> which is
+the root directory for Linux. Next, use the <kbd>Tab</kbd> key, to take
+advantage of RStudio’s Tab-autocompletion method, to select <code class="language-plaintext highlighter-rouge">home</code>, <code class="language-plaintext highlighter-rouge">dcuser</code>,
+and <code class="language-plaintext highlighter-rouge">dc_genomics_r</code> directory. The path in your script should look like this:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># This sets the working directory</span><span class="w">
+</span><span class="n">setwd</span><span class="p">(</span><span class="s2">"/home/dcuser/dc_genomics_r"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>When you run this command, the console repeats the command, but gives you no
+output. Instead, you see the blank R prompt: <code class="language-plaintext highlighter-rouge">&gt;</code>. Congratulations! Although it
+seems small, knowing what your working directory is and being able to set your
+working directory is the first step to analyzing your data.</p>
+
+<blockquote class="callout">
+  <h2 id="tip-never-use-setwd">Tip: Never use <code class="language-plaintext highlighter-rouge">setwd()</code></h2>
+
+  <p>Wait, what was the last 2 minutes about? Well, setting your working directory
+is something you need to do, you need to be very careful about using this as
+a step in your script. For example, what if your script is being on a computer
+that has a different directory structure? The top-level path in a Unix file
+system is root <code class="language-plaintext highlighter-rouge">/</code>, but on Windows it is likely <code class="language-plaintext highlighter-rouge">C:\</code>. This is one of several
+ways you might cause a script to break because a file path is configured
+differently than your script anticipates. R packages like <a href="https://cran.r-project.org/package=here">here</a>
+and <a href="https://www.rdocumentation.org/packages/base/versions/3.4.3/topics/file.path">file.path</a>
+allow you to specify file paths is a way that is more operating system
+independent. See Jenny Bryan’s <a href="https://www.tidyverse.org/articles/2017/12/workflow-vs-script/">blog post</a> for this
+and other R tips.</p>
+</blockquote>
+
+<h2 id="using-functions-in-r-without-needing-to-master-them">Using functions in R, without needing to master them</h2>
+
+<p>A function in R (or any computing language) is a short
+program that takes some input and returns some output. Functions may seem like an advanced topic (and they are), but you have already
+used at least one function in R. <code class="language-plaintext highlighter-rouge">getwd()</code> is a function! The next sections will help you understand what is happening in
+any R script.</p>
+
+<blockquote class="challenge">
+  <h2 id="exercise-what-do-these-functions-do">Exercise: What do these functions do?</h2>
+
+  <p>Try the following functions by writing them in your script. See if you can
+guess what they do, and make sure to add comments to your script about your
+assumed purpose.</p>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">dir()</code></li>
+    <li><code class="language-plaintext highlighter-rouge">sessionInfo()</code></li>
+    <li><code class="language-plaintext highlighter-rouge">date()</code></li>
+    <li><code class="language-plaintext highlighter-rouge">Sys.time()</code></li>
+  </ul>
+
+  <blockquote class="solution">
+    <h2 id="solution-1">Solution</h2>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">dir()</code> # Lists files in the working directory</li>
+      <li><code class="language-plaintext highlighter-rouge">sessionInfo()</code> # Gives the version of R and additional info including
+ on attached packages</li>
+      <li><code class="language-plaintext highlighter-rouge">date()</code> # Gives the current date</li>
+      <li><code class="language-plaintext highlighter-rouge">Sys.time()</code> # Gives the current time</li>
+    </ul>
+
+    <p><em>Notice</em>: Commands are case sensitive!</p>
+  </blockquote>
+</blockquote>
+
+<p>You have hopefully noticed a pattern - an R
+function has three key properties:</p>
+<ul>
+  <li>Functions have a name (e.g. <code class="language-plaintext highlighter-rouge">dir</code>, <code class="language-plaintext highlighter-rouge">getwd</code>); note that functions are case
+sensitive!</li>
+  <li>Following the name, functions have a pair of <code class="language-plaintext highlighter-rouge">()</code></li>
+  <li>Inside the parentheses, a function may take 0 or more arguments</li>
+</ul>
+
+<p>An argument may be a specific input for your function and/or may modify the
+function’s behavior. For example the function <code class="language-plaintext highlighter-rouge">round()</code> will round a number
+with a decimal:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># This will round a number to the nearest integer</span><span class="w">
+</span><span class="nf">round</span><span class="p">(</span><span class="m">3.14</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 3
+</code></pre></div></div>
+
+<h2 id="getting-help-with-function-arguments">Getting help with function arguments</h2>
+
+<p>What if you wanted to round to one significant digit? <code class="language-plaintext highlighter-rouge">round()</code> can
+do this, but you may first need to read the help to find out how. To see the help
+(In R sometimes also called a “vignette”) enter a <code class="language-plaintext highlighter-rouge">?</code> in front of the function
+name:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">?</span><span class="nf">round</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The “Help” tab will show you information (often, too much information). You
+will slowly learn how to read and make sense of help files. Checking the “Usage” or “Examples”
+headings is often a good place to look first. If you look under “Arguments,” we
+also see what arguments we can pass to this function to modify its behavior.
+You can also see a function’s argument using the <code class="language-plaintext highlighter-rouge">args()</code> function:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">args</span><span class="p">(</span><span class="n">round</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function (x, digits = 0) 
+NULL
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">round()</code> takes two arguments, <code class="language-plaintext highlighter-rouge">x</code>, which is the number to be 
+rounded, and a
+<code class="language-plaintext highlighter-rouge">digits</code> argument. The <code class="language-plaintext highlighter-rouge">=</code> sign indicates that a default (in this case 0) is
+already set. Since <code class="language-plaintext highlighter-rouge">x</code> is not set, <code class="language-plaintext highlighter-rouge">round()</code> requires we provide it, in contrast
+to <code class="language-plaintext highlighter-rouge">digits</code> where R will use the default value 0 unless you explicitly provide
+a different value. We can explicitly set the digits parameter when we call the
+function:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">round</span><span class="p">(</span><span class="m">3.14159</span><span class="p">,</span><span class="w"> </span><span class="n">digits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 3.14
+</code></pre></div></div>
+
+<p>Or, R accepts what we call “positional arguments”, if you pass a function
+arguments separated by commas, R assumes that they are in the order you saw
+when we used <code class="language-plaintext highlighter-rouge">args()</code>. In the case below that means that <code class="language-plaintext highlighter-rouge">x</code> is 3.14159 and
+digits is 2.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">round</span><span class="p">(</span><span class="m">3.14159</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 3.14
+</code></pre></div></div>
+
+<p>Finally, what if you are using <code class="language-plaintext highlighter-rouge">?</code> to get help for a function in a package not installed on your system, such as when you are running a script which has dependencies.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">?</span><span class="n">geom_point</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div>
+
+<p>will return an error:</p>
+
+<div class="language-plaintext error highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error in .helpForCall(topicExpr, parent.frame()) :
+   no methods for ‘geom_point’ and no documentation for it as a function
+</code></pre></div></div>
+
+<p>Use two question marks (i.e. <code class="language-plaintext highlighter-rouge">??geom_point()</code>) and R will return
+results from a search of the documentation for packages you have installed on your computer
+in the “Help” tab. Finally, if you think there
+should be a function, for example a statistical test, but you aren’t
+sure what it is called in R, or what functions may be available, use
+the <code class="language-plaintext highlighter-rouge">help.search()</code> function.</p>
+
+<blockquote class="challenge">
+  <h2 id="exercise-searching-for-r-functions">Exercise: Searching for R functions</h2>
+  <p>Use <code class="language-plaintext highlighter-rouge">help.search()</code> to find R functions for the following statistical
+functions. Remember to put your search query in quotes inside the function’s
+parentheses.</p>
+
+  <ul>
+    <li>Chi-Squared test</li>
+    <li>Student-t test</li>
+    <li>mixed linear model</li>
+  </ul>
+
+  <blockquote class="solution">
+    <h2 id="solution-2">Solution</h2>
+    <p>While your search results may return several tests, we list a few you might
+  find:</p>
+    <ul>
+      <li>Chi-Squared test: <code class="language-plaintext highlighter-rouge">stats::Chisquare</code></li>
+      <li>Student-t test: <code class="language-plaintext highlighter-rouge">stats::TDist</code></li>
+      <li>mixed linear model: <code class="language-plaintext highlighter-rouge">stats::lm.glm</code></li>
+    </ul>
+  </blockquote>
+</blockquote>
+
+<p>We will discuss more on where to look for the libraries and packages that contain functions you want to use. For now, be aware that two important ones are <a href="https://cran.r-project.org/">CRAN</a> - the main repository for R, and <a href="http://bioconductor.org/">Bioconductor</a> - a popular repository for bioinformatics-related R packages.</p>
+
+<h2 id="rstudio-contextual-help">RStudio contextual help</h2>
+
+<p>Here is one last bonus we will mention about RStudio. It’s difficult to
+remember all of the arguments and definitions associated with a given function.
+When you start typing the name of a function and hit the <kbd>Tab</kbd> key,
+RStudio will display functions and associated help:</p>
+
+<p><img src="../fig/studio_contexthelp1.png" alt="rstudio default session" style="width: 600px;" /></p>
+
+<p>Once you type a function, hitting the <kbd>Tab</kbd> inside the parentheses
+will show you the function’s arguments and provide additional help
+for each of these arguments.</p>
+
+<p><img src="../fig/studio_contexthelp2.png" alt="rstudio default session" style="width: 600px;" /></p>
+
+
+
+
+
+<blockquote class="keypoints">
+  <h2>Key Points</h2>
+  <ul>
+    
+    <li><p>R is a powerful, popular open-source scripting language</p>
+</li>
+    
+    <li><p>You can customize the layout of RStudio, and use the project feature to manage the files and packages used in your analysis</p>
+</li>
+    
+    <li><p>RStudio allows you to run R in an easy-to-use interface and makes it easy to find help</p>
+</li>
+    
+  </ul>
+</blockquote>
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+  <div class="col-xs-1">
+    <h3 class="text-left">
+      
+      <a href="../"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><span class="sr-only">lesson home</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-xs-10">
+    
+  </div>
+  <div class="col-xs-1">
+    <h3 class="text-right">
+      
+      <a href="../02-r-basics/index.html"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      
+    </h3>
+  </div>
+</div>
+
+
+
+      
+      
+
+
+
+
+
+
+<footer>
+  <hr/>
+  <div class="row">
+    <div class="col-md-6 license" id="license-info" align="left">
+	
+	Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> 2018–2020
+	by <a href="https://carpentries.org/">The Carpentries</a>
+        <br>
+        Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> 2016–2018
+	by <a href="http://datacarpentry.org">Data Carpentry</a>
+	
+    </div>
+    <div class="col-md-6 help-links" align="right">
+	
+	
+	<a href="/edit//_episodes_rmd/01-introduction.Rmd" data-checker-ignore>Edit on GitHub</a>
+	
+	
+	/
+	<a href="/blob//CONTRIBUTING.md" data-checker-ignore>Contributing</a>
+	/
+	<a href="/">Source</a>
+	/
+	<a href="/blob//CITATION" data-checker-ignore>Cite</a>
+	/
+	<a href="mailto:team@carpentries.org">Contact</a>
+    </div>
+  </div>
+  <p class="text-muted text-right">
+    <small><i>Using <a href="https://github.com/carpentries/carpentries-theme/">The Carpentries theme</a> &mdash; Site last built on: 2020-12-18 15:56:59 +0000.</i></small>
+  </p>
+</footer>
+
+      
+    </div>
+    
+<script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/lesson.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37305346-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>

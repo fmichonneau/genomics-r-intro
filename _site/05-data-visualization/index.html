@@ -1,0 +1,814 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="last-modified" content="2020-12-18 15:56:59 +0000">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- meta "search-domain" used for google site search function google_search() -->
+    <meta name="search-domain" value="">
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/lesson.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/syntax.css" />
+     <link rel="stylesheet" type="text/css" href="../assets/css/fonts.css" />
+    <link rel="license" href="#license-info" />
+
+    
+
+
+
+    <!-- Favicons for everyone -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../assets/favicons/dc/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/favicons/dc/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/favicons/dc/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/favicons/dc/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="../assets/favicons/dc/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="../assets/favicons/dc/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="../assets/favicons/dc/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../assets/favicons/dc/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="../assets/favicons/dc/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="../assets/favicons/dc/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="../assets/favicons/dc/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../assets/favicons/dc/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="../assets/favicons/dc/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="Data Carpentry - Intro to R and RStudio for Genomics"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="../assets/favicons/dc/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="../assets/favicons/dc/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="../assets/favicons/dc/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="../assets/favicons/dc/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="../assets/favicons/dc/mstile-310x310.png" />
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+  <title>
+  Data Visualization with ggplot2 &ndash; Intro to R and RStudio for Genomics
+  </title>
+
+  </head>
+  <body>
+    
+
+
+<div class="panel panel-default life-cycle">
+  <div id="life-cycle" class="panel-body alpha">
+    This lesson is in the early stages of development (Alpha version)
+  </div>
+</div>
+
+
+
+
+
+    <div class="container">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      
+      
+      <a href="http://datacarpentry.org" class="pull-left">
+        <img class="navbar-logo" src="../assets/img/dc-icon-black.svg" alt="Data Carpentry logo" />
+      </a>
+      
+
+      
+      <a class="navbar-brand" href="../index.html">Home</a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+	
+        <li><a href="../CODE_OF_CONDUCT.html">Code of Conduct</a></li>
+
+        
+	
+        <li><a href="../setup.html">Setup</a></li>
+
+        
+        
+        <li class="dropdown">
+          <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            
+            <li><a href="../01-introduction/index.html">Introducing R and RStudio IDE</a></li>
+            
+            
+            <li><a href="../02-r-basics/index.html">R Basics</a></li>
+            
+            
+            <li><a href="../03-basics-factors-dataframes/index.html">R Basics continued - factors and data frames</a></li>
+            
+            
+            <li><a href="../04-dplyr/index.html">Aggregating and Analyzing Data with dplyr</a></li>
+            
+            
+            <li><a href="../05-data-visualization/index.html">Data Visualization with ggplot2</a></li>
+            
+            
+            <li><a href="../XX-knitr-markdown/index.html">Producing Reports With knitr</a></li>
+            
+	    <li role="separator" class="divider"></li>
+            <li><a href="../aio.html">All in one page (Beta)</a></li>
+          </ul>
+        </li>
+        
+	
+
+	
+	
+        <li class="dropdown">
+          <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extras <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../reference.html">Reference</a></li>
+            
+            
+            <li><a href="../about/index.html">About</a></li>
+            
+            
+            <li><a href="../discuss/index.html">Discussion</a></li>
+            
+            
+            <li><a href="../figures/index.html">Figures</a></li>
+            
+            
+            <li><a href="../guide/index.html">Instructor Notes</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+        <li><a href="../LICENSE.html">License</a></li>
+	
+	
+	<li><a href="/edit//_episodes_rmd/05-data-visualization.Rmd" data-checker-ignore>Improve this page <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></li>
+	
+	
+      </ul>
+      <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
+        <div class="form-group">
+          <input type="text" id="google-search" placeholder="Search..." aria-label="Google site search">
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+      
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+  <div class="col-xs-1">
+    <h3 class="text-left">
+      
+      <a href="../04-dplyr/index.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-xs-10">
+    
+    <h3 class="maintitle"><a href="../">Intro to R and RStudio for Genomics</a></h3>
+    
+  </div>
+  <div class="col-xs-1">
+    <h3 class="text-right">
+      
+      <a href="../XX-knitr-markdown/index.html"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      
+    </h3>
+  </div>
+</div>
+
+<article>
+<div class="row">
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-10">
+    <h1 class="maintitle">Data Visualization with ggplot2</h1>
+  </div>
+  <div class="col-md-1">
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<blockquote class="objectives">
+  <h2>Overview</h2>
+
+  <div class="row">
+    <div class="col-md-3">
+      <strong>Teaching:</strong> 60 min
+      <br/>
+      <strong>Exercises:</strong> 30 min
+    </div>
+    <div class="col-md-9">
+      <strong>Questions</strong>
+      <ul>
+	
+	<li>
+</li>
+	
+	<li>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-9">
+      <strong>Objectives</strong>
+      <ul>
+	
+	<li>
+</li>
+	
+	<li><p>Describe the role of data, aesthetics, and geoms in ggplot functions.</p>
+</li>
+	
+	<li><p>Choose the correct aesthetics and alter the geom parameters for a scatter plot, histogram, or box plot.</p>
+</li>
+	
+	<li><p>Layer multiple geometries in a single plot.</p>
+</li>
+	
+	<li><p>Customize plot scales, titles, subtitles, themes, fonts, layout, and orientation.</p>
+</li>
+	
+	<li><p>Apply a facet to a plot.</p>
+</li>
+	
+	<li><p>Apply additional ggplot2-compatible plotting libraries.</p>
+</li>
+	
+	<li><p>Save a ggplot to a file.</p>
+</li>
+	
+	<li><p>List several resources for getting help with ggplot.</p>
+</li>
+	
+	<li><p>List several resources for creating informative scientific plots.</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+</blockquote>
+
+<p>We start by loading the package <strong><code class="language-plaintext highlighter-rouge">ggplot2</code></strong>.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+<h2 id="plotting-with-ggplot2">Plotting with <strong><code class="language-plaintext highlighter-rouge">ggplot2</code></strong></h2>
+
+<p><strong><code class="language-plaintext highlighter-rouge">ggplot2</code></strong> is a plotting package that makes it simple to create complex plots
+from data in a data frame. It provides a more programmatic interface for
+specifying what variables to plot, how they are displayed, and general visual
+properties. Therefore, we only need minimal changes if the underlying data change
+or if we decide to change from a bar plot to a scatter plot. This helps in creating
+publication quality plots with minimal amounts of adjustments and tweaking.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">ggplot2</code></strong> functions like data in the ‘long’ format, i.e., a column for every dimension,
+and a row for every observation. Well-structured data will save you lots of time
+when making figures with <strong><code class="language-plaintext highlighter-rouge">ggplot2</code></strong></p>
+
+<p>ggplot graphics are built step by step by adding new elements. Adding layers in
+this fashion allows for extensive flexibility and customization of plots.</p>
+
+<p>To build a ggplot, we will use the following basic template that can be used for different types of plots:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="n">DATA</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">mapping</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="o">&lt;</span><span class="n">MAPPINGS</span><span class="o">&gt;</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">  </span><span class="o">&lt;</span><span class="n">GEOM_FUNCTION</span><span class="o">&gt;</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div>
+
+<ul>
+  <li>use the <code class="language-plaintext highlighter-rouge">ggplot()</code> function and bind the plot to a specific data frame using the
+    <code class="language-plaintext highlighter-rouge">data</code> argument</li>
+</ul>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">variants</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<ul>
+  <li>define a mapping (using the aesthetic (<code class="language-plaintext highlighter-rouge">aes</code>) function), by selecting the variables to be plotted and specifying how to present them in the graph, e.g. as x/y positions or characteristics such as size, shape, color, etc.</li>
+</ul>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">variants</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">POS</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DP</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+
+<ul>
+  <li>
+    <p>add ‘geoms’ – graphical representations of the data in the plot (points,
+lines, bars). <strong><code class="language-plaintext highlighter-rouge">ggplot2</code></strong> offers many different geoms; we will use some
+common ones today, including:</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* `geom_point()` for scatter plots, dot plots, etc.
+* `geom_boxplot()` for, well, boxplots!
+* `geom_line()` for trend lines, time series, etc.
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>To add a geom to the plot use the <code class="language-plaintext highlighter-rouge">+</code> operator. Because we have two continuous variables,
+let’s use <code class="language-plaintext highlighter-rouge">geom_point()</code> first:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">variants</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">POS</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DP</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_point</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="../fig/rmd-05-first-ggplot-1.png" title="plot of chunk first-ggplot" alt="plot of chunk first-ggplot" width="612" style="display: block; margin: auto;" /></p>
+
+<p>The <code class="language-plaintext highlighter-rouge">+</code> in the <strong><code class="language-plaintext highlighter-rouge">ggplot2</code></strong> package is particularly useful because it allows you
+to modify existing <code class="language-plaintext highlighter-rouge">ggplot</code> objects. This means you can easily set up plot
+templates and conveniently explore different types of plots, so the above
+plot can also be generated with code like this:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Assign plot to a variable</span><span class="w">
+</span><span class="n">coverage_plot</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">variants</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">POS</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DP</span><span class="p">))</span><span class="w">
+
+</span><span class="c1"># Draw the plot</span><span class="w">
+</span><span class="n">coverage_plot</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">geom_point</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div>
+
+<p><strong>Notes</strong></p>
+
+<ul>
+  <li>Anything you put in the <code class="language-plaintext highlighter-rouge">ggplot()</code> function can be seen by any geom layers
+that you add (i.e., these are universal plot settings). This includes the x- and
+y-axis mapping you set up in <code class="language-plaintext highlighter-rouge">aes()</code>.</li>
+  <li>You can also specify mappings for a given geom independently of the
+mappings defined globally in the <code class="language-plaintext highlighter-rouge">ggplot()</code> function.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">+</code> sign used to add new layers must be placed at the end of the line containing
+the <em>previous</em> layer. If, instead, the <code class="language-plaintext highlighter-rouge">+</code> sign is added at the beginning of the line
+containing the new layer, <strong><code class="language-plaintext highlighter-rouge">ggplot2</code></strong> will not add the new layer and will return an
+error message.</li>
+</ul>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># This is the correct syntax for adding layers</span><span class="w">
+</span><span class="n">coverage_plot</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_point</span><span class="p">()</span><span class="w">
+
+</span><span class="c1"># This will not add the new layer and will return an error message</span><span class="w">
+</span><span class="n">coverage_plot</span><span class="w">
+  </span><span class="o">+</span><span class="w"> </span><span class="n">geom_point</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="building-your-plots-iteratively">Building your plots iteratively</h2>
+
+<p>Building plots with <strong><code class="language-plaintext highlighter-rouge">ggplot2</code></strong> is typically an iterative process. We start by
+defining the dataset we’ll use, lay out the axes, and choose a geom:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">variants</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">POS</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DP</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_point</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="../fig/rmd-05-create-ggplot-object-1.png" title="plot of chunk create-ggplot-object" alt="plot of chunk create-ggplot-object" width="612" style="display: block; margin: auto;" /></p>
+
+<p>Then, we start modifying this plot to extract more information from it. For
+instance, we can add transparency (<code class="language-plaintext highlighter-rouge">alpha</code>) to avoid overplotting:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">variants</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">POS</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DP</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">geom_point</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="../fig/rmd-05-adding-transparency-1.png" title="plot of chunk adding-transparency" alt="plot of chunk adding-transparency" width="612" style="display: block; margin: auto;" /></p>
+
+<p>We can also add colors for all the points:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">variants</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">POS</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DP</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_point</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"blue"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="../fig/rmd-05-adding-colors-1.png" title="plot of chunk adding-colors" alt="plot of chunk adding-colors" width="612" style="display: block; margin: auto;" /></p>
+
+<p>Or to color each species in the plot differently, you could use a vector as an input to the argument <strong>color</strong>. <strong><code class="language-plaintext highlighter-rouge">ggplot2</code></strong> will provide a different color corresponding to different values in the vector. Here is an example where we color with <strong><code class="language-plaintext highlighter-rouge">sample_id</code></strong>:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">variants</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">POS</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DP</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sample_id</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_point</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="../fig/rmd-05-color-by-sample-1-1.png" title="plot of chunk color-by-sample-1" alt="plot of chunk color-by-sample-1" width="612" style="display: block; margin: auto;" /></p>
+
+<p>Notice that we can change the geom layer and colors will be still determined by <strong><code class="language-plaintext highlighter-rouge">sample_id</code></strong></p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">variants</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">POS</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DP</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sample_id</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_jitter</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="../fig/rmd-05-color-by-sample-2-1.png" title="plot of chunk color-by-sample-2" alt="plot of chunk color-by-sample-2" width="612" style="display: block; margin: auto;" /></p>
+
+<p>To make our plot more readable, we can add axis labels:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">variants</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">POS</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DP</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sample_id</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_jitter</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Base Pair Position"</span><span class="p">,</span><span class="w">
+       </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Read Depth (DP)"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="../fig/rmd-05-add-axis-labels-1.png" title="plot of chunk add-axis-labels" alt="plot of chunk add-axis-labels" width="612" style="display: block; margin: auto;" /></p>
+
+<blockquote class="challenge">
+  <h2 id="challenge">Challenge</h2>
+
+  <p>Use what you just learned to create a scatter plot of mapping quality (<code class="language-plaintext highlighter-rouge">MQ</code>) over
+position (<code class="language-plaintext highlighter-rouge">POS</code>) with the samples showing in different colors. Make sure to give your plot
+relevant axis labels.</p>
+
+  <blockquote class="solution">
+    <h2 id="solution">Solution</h2>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">variants</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">POS</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MQ</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sample_id</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Base Pair Position"</span><span class="p">,</span><span class="w">
+       </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Mapping Quality (MQ)"</span><span class="p">)</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <p><img src="../fig/rmd-05-scatter-challenge-1.png" title="plot of chunk scatter-challenge" alt="plot of chunk scatter-challenge" width="612" style="display: block; margin: auto;" /></p>
+  </blockquote>
+</blockquote>
+
+<h2 id="faceting">Faceting</h2>
+
+<p><strong><code class="language-plaintext highlighter-rouge">ggplot2</code></strong> has a special technique called <em>faceting</em> that allows the user to split one
+plot into multiple plots based on a factor included in the dataset. We will use it to split our
+mapping quality plot into three panels, one for each sample.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">variants</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">POS</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MQ</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sample_id</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+ </span><span class="n">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+ </span><span class="n">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Base Pair Position"</span><span class="p">,</span><span class="w">
+      </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Mapping Quality (MQ)"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+ </span><span class="n">facet_grid</span><span class="p">(</span><span class="n">.</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">sample_id</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="../fig/rmd-05-first-facet-1.png" title="plot of chunk first-facet" alt="plot of chunk first-facet" width="612" style="display: block; margin: auto;" /></p>
+
+<p>This looks ok, but it would be easier to read if the plot facets were stacked vertically rather
+than horizontally. The <code class="language-plaintext highlighter-rouge">facet_grid</code>
+geometry allows you to explicitly specify how you want your plots to be
+arranged via formula notation (<code class="language-plaintext highlighter-rouge">rows ~ columns</code>; a <code class="language-plaintext highlighter-rouge">.</code> can be used as
+a placeholder that indicates only one row or column).</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">variants</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">POS</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MQ</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sample_id</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+ </span><span class="n">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+ </span><span class="n">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Base Pair Position"</span><span class="p">,</span><span class="w">
+      </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Mapping Quality (MQ)"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+ </span><span class="n">facet_grid</span><span class="p">(</span><span class="n">sample_id</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">.</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="../fig/rmd-05-second-facet-1.png" title="plot of chunk second-facet" alt="plot of chunk second-facet" width="612" style="display: block; margin: auto;" /></p>
+
+<p>Usually plots with white background look more readable when printed.  We can set
+the background to white using the function <code class="language-plaintext highlighter-rouge">theme_bw()</code>. Additionally, you can remove
+the grid:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">variants</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">POS</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MQ</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sample_id</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Base Pair Position"</span><span class="p">,</span><span class="w">
+       </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Mapping Quality (MQ)"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">facet_grid</span><span class="p">(</span><span class="n">sample_id</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">.</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">theme_bw</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">theme</span><span class="p">(</span><span class="n">panel.grid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">element_blank</span><span class="p">())</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="../fig/rmd-05-facet-plot-white-bg-1.png" title="plot of chunk facet-plot-white-bg" alt="plot of chunk facet-plot-white-bg" width="612" style="display: block; margin: auto;" /></p>
+
+<blockquote class="challenge">
+  <h2 id="challenge-1">Challenge</h2>
+
+  <p>Use what you just learned to create a scatter plot of PHRED scaled quality (<code class="language-plaintext highlighter-rouge">QUAL</code>) over
+position (<code class="language-plaintext highlighter-rouge">POS</code>) with the samples showing in different colors. Make sure to give your plot
+relevant axis labels.</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-1">Solution</h2>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">variants</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">POS</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QUAL</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sample_id</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Base Pair Position"</span><span class="p">,</span><span class="w">
+       </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"PHRED-sacled Quality (QUAL)"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">facet_grid</span><span class="p">(</span><span class="n">sample_id</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">.</span><span class="p">)</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <p><img src="../fig/rmd-05-scatter-challenge-2-1.png" title="plot of chunk scatter-challenge-2" alt="plot of chunk scatter-challenge-2" width="612" style="display: block; margin: auto;" /></p>
+  </blockquote>
+</blockquote>
+
+<h2 id="barplots">Barplots</h2>
+
+<p>We can create barplots using the <code class="language-plaintext highlighter-rouge">geom_bar</code> geom. Let’s make a barplot showing
+the number of variants for each sample that are indels.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">variants</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">INDEL</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sample_id</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_bar</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">facet_grid</span><span class="p">(</span><span class="n">sample_id</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">.</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="../fig/rmd-05-barplot-1.png" title="plot of chunk barplot" alt="plot of chunk barplot" width="612" style="display: block; margin: auto;" /></p>
+
+<blockquote class="challenge">
+  <h2 id="challenge-2">Challenge</h2>
+  <p>Since we already have the sample_id labels on the individual plot facets, we don’t need the
+legend. Use the help file for <code class="language-plaintext highlighter-rouge">geom_bar</code> and any other online resources you want to use to
+remove the legend from the plot.</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-2">Solution</h2>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">variants</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">INDEL</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sample_id</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+   </span><span class="n">geom_bar</span><span class="p">(</span><span class="n">show.legend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">F</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+   </span><span class="n">facet_grid</span><span class="p">(</span><span class="n">sample_id</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">.</span><span class="p">)</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <p><img src="../fig/rmd-05-barplot-challenge-1.png" title="plot of chunk barplot-challenge" alt="plot of chunk barplot-challenge" width="612" style="display: block; margin: auto;" /></p>
+  </blockquote>
+</blockquote>
+
+<h2 id="ggplot2-themes"><strong><code class="language-plaintext highlighter-rouge">ggplot2</code></strong> themes</h2>
+
+<p>In addition to <code class="language-plaintext highlighter-rouge">theme_bw()</code>, which changes the plot background to white, <strong><code class="language-plaintext highlighter-rouge">ggplot2</code></strong>
+comes with several other themes which can be useful to quickly change the look
+of your visualization. The complete list of themes is available
+at <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">https://ggplot2.tidyverse.org/reference/ggtheme.html</a>. <code class="language-plaintext highlighter-rouge">theme_minimal()</code> and
+<code class="language-plaintext highlighter-rouge">theme_light()</code> are popular, and <code class="language-plaintext highlighter-rouge">theme_void()</code> can be useful as a starting
+point to create a new hand-crafted theme.</p>
+
+<p>The
+<a href="https://jrnold.github.io/ggthemes/reference/index.html">ggthemes</a> package
+provides a wide variety of options (including an Excel 2003 theme).
+The <a href="https://exts.ggplot2.tidyverse.org/"><strong><code class="language-plaintext highlighter-rouge">ggplot2</code></strong> extensions website</a> provides a list
+of packages that extend the capabilities of <strong><code class="language-plaintext highlighter-rouge">ggplot2</code></strong>, including additional
+themes.</p>
+
+<blockquote class="challenge">
+  <h2 id="challenge-3">Challenge</h2>
+
+  <p>With all of this information in hand, please take another five minutes to
+either improve one of the plots generated in this exercise or create a
+beautiful graph of your own. Use the RStudio <a href="https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf"><strong><code class="language-plaintext highlighter-rouge">ggplot2</code></strong> cheat sheet</a>
+for inspiration. Here are some ideas:</p>
+
+  <ul>
+    <li>See if you can change the size or shape of the plotting symbol.</li>
+    <li>Can you find a way to change the name of the legend? What about its labels?</li>
+    <li>Try using a different color palette (see
+http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/).</li>
+  </ul>
+</blockquote>
+
+
+
+
+
+<blockquote class="keypoints">
+  <h2>Key Points</h2>
+  <ul>
+    
+    <li>
+</li>
+    
+    <li>
+</li>
+    
+    <li>
+</li>
+    
+  </ul>
+</blockquote>
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+  <div class="col-xs-1">
+    <h3 class="text-left">
+      
+      <a href="../04-dplyr/index.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-xs-10">
+    
+  </div>
+  <div class="col-xs-1">
+    <h3 class="text-right">
+      
+      <a href="../XX-knitr-markdown/index.html"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      
+    </h3>
+  </div>
+</div>
+
+
+
+      
+      
+
+
+
+
+
+
+<footer>
+  <hr/>
+  <div class="row">
+    <div class="col-md-6 license" id="license-info" align="left">
+	
+	Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> 2018–2020
+	by <a href="https://carpentries.org/">The Carpentries</a>
+        <br>
+        Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> 2016–2018
+	by <a href="http://datacarpentry.org">Data Carpentry</a>
+	
+    </div>
+    <div class="col-md-6 help-links" align="right">
+	
+	
+	<a href="/edit//_episodes_rmd/05-data-visualization.Rmd" data-checker-ignore>Edit on GitHub</a>
+	
+	
+	/
+	<a href="/blob//CONTRIBUTING.md" data-checker-ignore>Contributing</a>
+	/
+	<a href="/">Source</a>
+	/
+	<a href="/blob//CITATION" data-checker-ignore>Cite</a>
+	/
+	<a href="mailto:team@carpentries.org">Contact</a>
+    </div>
+  </div>
+  <p class="text-muted text-right">
+    <small><i>Using <a href="https://github.com/carpentries/carpentries-theme/">The Carpentries theme</a> &mdash; Site last built on: 2020-12-18 15:56:59 +0000.</i></small>
+  </p>
+</footer>
+
+      
+    </div>
+    
+<script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/lesson.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37305346-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>

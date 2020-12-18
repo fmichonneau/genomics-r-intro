@@ -1,0 +1,1450 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="last-modified" content="2020-12-18 15:56:59 +0000">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- meta "search-domain" used for google site search function google_search() -->
+    <meta name="search-domain" value="">
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/lesson.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/syntax.css" />
+     <link rel="stylesheet" type="text/css" href="../assets/css/fonts.css" />
+    <link rel="license" href="#license-info" />
+
+    
+
+
+
+    <!-- Favicons for everyone -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../assets/favicons/dc/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/favicons/dc/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/favicons/dc/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/favicons/dc/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="../assets/favicons/dc/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="../assets/favicons/dc/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="../assets/favicons/dc/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../assets/favicons/dc/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="../assets/favicons/dc/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="../assets/favicons/dc/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="../assets/favicons/dc/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../assets/favicons/dc/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="../assets/favicons/dc/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="Data Carpentry - Intro to R and RStudio for Genomics"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="../assets/favicons/dc/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="../assets/favicons/dc/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="../assets/favicons/dc/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="../assets/favicons/dc/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="../assets/favicons/dc/mstile-310x310.png" />
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+  <title>
+  R Basics &ndash; Intro to R and RStudio for Genomics
+  </title>
+
+  </head>
+  <body>
+    
+
+
+<div class="panel panel-default life-cycle">
+  <div id="life-cycle" class="panel-body alpha">
+    This lesson is in the early stages of development (Alpha version)
+  </div>
+</div>
+
+
+
+
+
+    <div class="container">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      
+      
+      <a href="http://datacarpentry.org" class="pull-left">
+        <img class="navbar-logo" src="../assets/img/dc-icon-black.svg" alt="Data Carpentry logo" />
+      </a>
+      
+
+      
+      <a class="navbar-brand" href="../index.html">Home</a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+	
+        <li><a href="../CODE_OF_CONDUCT.html">Code of Conduct</a></li>
+
+        
+	
+        <li><a href="../setup.html">Setup</a></li>
+
+        
+        
+        <li class="dropdown">
+          <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            
+            <li><a href="../01-introduction/index.html">Introducing R and RStudio IDE</a></li>
+            
+            
+            <li><a href="../02-r-basics/index.html">R Basics</a></li>
+            
+            
+            <li><a href="../03-basics-factors-dataframes/index.html">R Basics continued - factors and data frames</a></li>
+            
+            
+            <li><a href="../04-dplyr/index.html">Aggregating and Analyzing Data with dplyr</a></li>
+            
+            
+            <li><a href="../05-data-visualization/index.html">Data Visualization with ggplot2</a></li>
+            
+            
+            <li><a href="../XX-knitr-markdown/index.html">Producing Reports With knitr</a></li>
+            
+	    <li role="separator" class="divider"></li>
+            <li><a href="../aio.html">All in one page (Beta)</a></li>
+          </ul>
+        </li>
+        
+	
+
+	
+	
+        <li class="dropdown">
+          <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extras <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../reference.html">Reference</a></li>
+            
+            
+            <li><a href="../about/index.html">About</a></li>
+            
+            
+            <li><a href="../discuss/index.html">Discussion</a></li>
+            
+            
+            <li><a href="../figures/index.html">Figures</a></li>
+            
+            
+            <li><a href="../guide/index.html">Instructor Notes</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+        <li><a href="../LICENSE.html">License</a></li>
+	
+	
+	<li><a href="/edit//_episodes_rmd/02-r-basics.Rmd" data-checker-ignore>Improve this page <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></li>
+	
+	
+      </ul>
+      <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
+        <div class="form-group">
+          <input type="text" id="google-search" placeholder="Search..." aria-label="Google site search">
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+      
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+  <div class="col-xs-1">
+    <h3 class="text-left">
+      
+      <a href="../01-introduction/index.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-xs-10">
+    
+    <h3 class="maintitle"><a href="../">Intro to R and RStudio for Genomics</a></h3>
+    
+  </div>
+  <div class="col-xs-1">
+    <h3 class="text-right">
+      
+      <a href="../03-basics-factors-dataframes/index.html"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      
+    </h3>
+  </div>
+</div>
+
+<article>
+<div class="row">
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-10">
+    <h1 class="maintitle">R Basics</h1>
+  </div>
+  <div class="col-md-1">
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<blockquote class="objectives">
+  <h2>Overview</h2>
+
+  <div class="row">
+    <div class="col-md-3">
+      <strong>Teaching:</strong> 60 min
+      <br/>
+      <strong>Exercises:</strong> 20 min
+    </div>
+    <div class="col-md-9">
+      <strong>Questions</strong>
+      <ul>
+	
+	<li><p>What will these lessons not cover?</p>
+</li>
+	
+	<li><p>What are the basic features of the R language?</p>
+</li>
+	
+	<li><p>What are the most common objects in R?</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-9">
+      <strong>Objectives</strong>
+      <ul>
+	
+	<li><p>Be able to create the most common R objects including vectors</p>
+</li>
+	
+	<li><p>Understand that vectors have modes, which correspond to the type of data they contain</p>
+</li>
+	
+	<li><p>Be able to use arithmetic operators on R objects</p>
+</li>
+	
+	<li><p>Be able to retrieve (subset), name, or replace, values from a vector</p>
+</li>
+	
+	<li><p>Be able to use logical operators in a subsetting operation</p>
+</li>
+	
+	<li><p>Understand that lists can hold data of more than one mode and can be indexed</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+</blockquote>
+
+<h2 id="the-fantastic-world-of-r-awaits-you-or-nobody-wants-to-learn-how-to-use-r">“The fantastic world of R awaits you” OR “Nobody wants to learn how to use R”</h2>
+
+<p>Before we begin this lesson, we want you to be clear on the goal of the workshop
+and these lessons. We believe that every learner can <strong>achieve competency
+with R</strong>. You have reached competency when you find that you are able to
+<strong>use R to handle common analysis challenges in a reasonable amount of time</strong>
+(which includes time needed to look at learning materials, search for answers
+online, and ask colleagues for help). As you spend more time using R (there is
+no substitute for regular use and practice) you will find yourself gaining
+competency and even expertise. The more familiar you get, the more
+complex the analyses you will be able to carry out, with less frustration, and
+in less time - the fantastic world of R awaits you!</p>
+
+<h2 id="what-these-lessons-will-not-teach-you">What these lessons will not teach you</h2>
+
+<p>Nobody wants to learn how to use R. People want to learn how to use R to analyze
+their own research questions! Ok, maybe some folks learn R for R’s sake, but
+these lessons assume that you want to start analyzing genomic data as soon as
+possible. Given this, there are many valuable pieces of information about R
+that we simply won’t have time to cover. Hopefully, we will clear the hurdle of
+giving you just enough knowledge to be dangerous, which can be a high bar
+in R! We suggest you look into the additional learning materials in the tip box
+below.</p>
+
+<p><strong>Here are some R skills we will <em>not</em> cover in these lessons</strong></p>
+
+<ul>
+  <li>How to create and work with R matrices and R lists</li>
+  <li>How to create and work with loops and conditional statements, and the “apply”
+family of functions (which are super useful, read more <a href="https://www.r-bloggers.com/r-tutorial-on-the-apply-family-of-functions/">here</a>)</li>
+  <li>How to do basic string manipulations (e.g. finding patterns in text using grep, replacing text)</li>
+  <li>How to plot using the default R graphic tools (we <em>will</em> cover plot creation, but will do so using the popular plotting package <code class="language-plaintext highlighter-rouge">ggplot2</code>)</li>
+  <li>How to use advanced R statistical functions</li>
+</ul>
+
+<blockquote class="callout">
+  <h2 id="tip-where-to-learn-more">Tip: Where to learn more</h2>
+  <p>The following are good resources for learning more about R. Some of them
+can be quite technical, but if you are a regular R user you may ultimately
+need this technical knowledge.</p>
+  <ul>
+    <li><a href="https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf">R for Beginners</a>:
+  By Emmanuel Paradis and a great starting point</li>
+    <li><a href="https://cran.r-project.org/manuals.html">The R Manuals</a>: Maintained by the
+  R project</li>
+    <li><a href="https://cran.r-project.org/other-docs.html">R contributed documentation</a>:
+  Also linked to the R project; importantly there are materials available in
+  several languages</li>
+    <li><a href="http://r4ds.had.co.nz/">R for Data Science</a>: A wonderful collection by
+  noted R educators and developers Garrett Grolemund and Hadley Wickham</li>
+    <li><a href="https://peerj.com/collections/50-practicaldatascistats/">Practical Data Science for Stats</a>:
+  Not exclusively about R usage, but a nice collection of pre-prints on data science
+  and applications for R</li>
+    <li><a href="https://software-carpentry.org/lessons/">Programming in R Software Carpentry lesson</a>:
+  There are several Software Carpentry lessons in R to choose from</li>
+  </ul>
+</blockquote>
+
+<h2 id="creating-objects-in-r">Creating objects in R</h2>
+
+<blockquote class="prereq">
+  <h2 id="reminder">Reminder</h2>
+
+  <p>At this point you should be coding along in the “<strong>genomics_r_basics.R</strong>”
+script we created in the last episode. Writing your commands in the script
+(and commenting it) will make it easier to record what you did and why.</p>
+</blockquote>
+
+<p>What might be called a variable in many languages is called an <strong>object</strong>
+in R.</p>
+
+<p><strong>To create an object you need:</strong></p>
+
+<ul>
+  <li>a name (e.g. ‘a’)</li>
+  <li>a value (e.g. ‘1’)</li>
+  <li>the assignment operator (‘&lt;-‘)</li>
+</ul>
+
+<p>In your script, “<strong>genomics_r_basics.R</strong>”, using the R assignment operator ‘&lt;-‘,
+assign ‘1’ to the object ‘a’ as shown. Remember to leave a comment in the line
+above (using the ‘#’) to explain what you are doing:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># this line creates the object 'a' and assigns it the value '1'</span><span class="w">
+
+</span><span class="n">a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Next, run this line of code in your script. You can run a line of code
+by hitting the <kbd>Run</kbd> button that is just above the first line of your
+script in the header of the Source pane or you can use the appropriate shortcut:</p>
+
+<ul>
+  <li>Windows execution shortcut: <kbd>Ctrl</kbd>+<kbd>Enter</kbd></li>
+  <li>Mac execution shortcut: <kbd>Cmd(⌘)</kbd>+<kbd>Enter</kbd></li>
+</ul>
+
+<p>To run multiple lines of code, you can highlight all the line you wish to run
+and then hit <kbd>Run</kbd> or use the shortcut key combo listed above.</p>
+
+<p>In the RStudio ‘Console’ you should see:</p>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a &lt;- 1
+&gt;
+</code></pre></div></div>
+
+<p>The ‘Console’ will display lines of code run from a script and any outputs or
+status/warning/error messages (usually in red).</p>
+
+<p>In the ‘Environment’ window you will also get a table:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Values</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>a</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The ‘Environment’ window allows you to keep track of the objects you have
+created in R.</p>
+
+<blockquote class="challenge">
+  <h2 id="exercise-create-some-objects-in-r">Exercise: Create some objects in R</h2>
+
+  <p>Create the following objects; give each object an appropriate name
+(your best guess at what name to use is fine):</p>
+
+  <ol>
+    <li>Create an object that has the value of number of pairs of human chromosomes</li>
+    <li>Create an object that has a value of your favorite gene name</li>
+    <li>Create an object that has this URL as its value: “ftp://ftp.ensemblgenomes.org/pub/bacteria/release-39/fasta/bacteria_5_collection/escherichia_coli_b_str_rel606/”</li>
+    <li>Create an object that has the value of the number of chromosomes in a
+diploid human cell</li>
+  </ol>
+
+  <blockquote class="solution">
+    <h2 id="solution">Solution</h2>
+
+    <p>Here as some possible answers to the challenge:</p>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">human_chr_number</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">23</span><span class="w">
+</span><span class="n">gene_name</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s1">'pten'</span><span class="w">
+</span><span class="n">ensemble_url</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s1">'ftp://ftp.ensemblgenomes.org/pub/bacteria/release-39/fasta/bacteria_5_collection/escherichia_coli_b_str_rel606/'</span><span class="w">
+</span><span class="n">human_diploid_chr_num</span><span class="w"> </span><span class="o">&lt;-</span><span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">human_chr_number</span><span class="w">
+</span></code></pre></div>    </div>
+  </blockquote>
+</blockquote>
+
+<h2 id="naming-objects-in-r">Naming objects in R</h2>
+
+<p>Here are some important details about naming objects in R.</p>
+
+<ul>
+  <li><strong>Avoid spaces and special characters</strong>: Object names cannot contain spaces or the minus sign (<code class="language-plaintext highlighter-rouge">-</code>). You can use ‘_’ to make names more readable. You should avoid
+using special characters in your object name (e.g. ! @ # . , etc.). Also,
+object names cannot begin with a number.</li>
+  <li><strong>Use short, easy-to-understand names</strong>: You should avoid naming your objects
+using single letters (e.g. ‘n’, ‘p’, etc.). This is mostly to encourage you
+to use names that would make sense to anyone reading your code (a colleague,
+or even yourself a year from now). Also, avoiding excessively long names will
+make your code more readable.</li>
+  <li><strong>Avoid commonly used names</strong>: There are several names that may already have a
+definition in the R language (e.g. ‘mean’, ‘min’, ‘max’). One clue that a name
+already has meaning is that if you start typing a name in RStudio and it gets
+a colored highlight or RStudio gives you a suggested autocompletion you have
+chosen a name that has a reserved meaning.</li>
+  <li><strong>Use the recommended assignment operator</strong>: In R, we use ‘&lt;- ‘ as the
+preferred assignment operator. ‘=’ works too, but is most commonly used in
+passing arguments to functions (more on functions later). There is a shortcut
+for the R assignment operator:
+    <ul>
+      <li>Windows execution shortcut: <kbd>Alt</kbd>+<kbd>-</kbd></li>
+      <li>Mac execution shortcut: <kbd>Option</kbd>+<kbd>-</kbd></li>
+    </ul>
+  </li>
+</ul>
+
+<p>There are a few more suggestions about naming and style you may want to learn
+more about as you write more R code. There are several “style guides” that
+have advice, and one to start with is the <a href="http://style.tidyverse.org/index.html">tidyverse R style guide</a>.</p>
+
+<blockquote class="callout">
+  <h2 id="tip-pay-attention-to-warnings-in-the-script-console">Tip: Pay attention to warnings in the script console</h2>
+
+  <p>If you enter a line of code in your script that contains an error, RStudio
+may give you an error message and underline this mistake. Sometimes these
+messages are easy to understand, but often the messages may need some figuring
+out. Paying attention to these warnings will help you avoid mistakes. In the example below, our object name has a space, which
+is not allowed in R. The error message does not say this directly,
+but R is “not sure”
+about how to assign the name to “human_ chr_number” when the object name we
+want is “human_chr_number”.</p>
+
+  <p><img src="../fig/rstudio_script_warning.png" alt="rstudio script warning" style="width: 600px;" /></p>
+</blockquote>
+
+<h2 id="reassigning-object-names-or-deleting-objects">Reassigning object names or deleting objects</h2>
+
+<p>Once an object has a value, you can change that value by overwriting it. R will
+not give you a warning or error if you overwriting an object, which
+may or may not be a good thing
+depending on how you look at it.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># gene_name has the value 'pten' or whatever value you used in the challenge.</span><span class="w">
+</span><span class="c1"># We will now assign the new value 'tp53'</span><span class="w">
+</span><span class="n">gene_name</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s1">'tp53'</span><span class="w">
+</span></code></pre></div></div>
+
+<p>You can also remove an object from R’s memory entirely. The <code class="language-plaintext highlighter-rouge">rm()</code> function
+will delete the object.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># delete the object 'gene_name'</span><span class="w">
+</span><span class="n">rm</span><span class="p">(</span><span class="n">gene_name</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>If you run a line of code that has only an object name, R will normally display
+the contents of that object. In this case, we are told the object no
+longer exists.</p>
+
+<div class="language-plaintext error highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error: object 'gene_name' not found
+</code></pre></div></div>
+
+<h2 id="understanding-object-data-types-modes">Understanding object data types (modes)</h2>
+
+<p>In R, <strong>every object has two properties</strong>:</p>
+
+<ul>
+  <li><strong>Length</strong>: How many distinct values are held in that object</li>
+  <li><strong>Mode</strong>: What is the classification (type) of that object.</li>
+</ul>
+
+<p>We will get to the “length” property later in the lesson. The <strong>“mode” property</strong>
+<strong>corresponds to the type of data an object represents</strong>. The most common modes
+you will encounter in R are:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Mode (abbreviation)</th>
+      <th>Type of data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Numeric (num)</td>
+      <td>Numbers such floating point/decimals (1.0, 0.5, 3.14), there are also more specific numeric types (dbl - Double, int - Integer). These differences are not relevant for most beginners and pertain to how these values are stored in memory</td>
+    </tr>
+    <tr>
+      <td>Character (chr)</td>
+      <td>A sequence of letters/numbers in single ‘’ or double “ “ quotes</td>
+    </tr>
+    <tr>
+      <td>Logical</td>
+      <td>Boolean values - TRUE or FALSE</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>There are a few other modes (i.e. “complex”, “raw” etc.) but these
+are the three we will work with in this lesson.</p>
+
+<p>Data types are familiar in many programming languages, but also in natural
+language where we refer to them as the parts of speech, e.g. nouns, verbs,
+adverbs, etc. Once you know if a word - perhaps an unfamiliar one - is a noun,
+you can probably guess you can count it and make it plural if there is more than
+one (e.g. 1 <a href="https://en.wikipedia.org/wiki/Tuatara">Tuatara</a>, or 2 Tuataras). If
+something is a adjective, you can usually change it into an adverb by adding
+“-ly” (e.g. <a href="https://www.merriam-webster.com/dictionary/jejune">jejune</a> vs.
+jejunely). Depending on the context, you may need to decide if a word is in one
+category or another (e.g “cut” may be a noun when it’s on your finger, or a verb
+when you are preparing vegetables). These concepts have important analogies when
+working with R objects.</p>
+
+<blockquote class="challenge">
+  <h2 id="exercise-create-objects-and-check-their-modes">Exercise: Create objects and check their modes</h2>
+
+  <p>Create the following objects in R, then use the <code class="language-plaintext highlighter-rouge">mode()</code> function to verify
+their modes. Try to guess what the mode will be before you look at the solution</p>
+
+  <ol>
+    <li><code class="language-plaintext highlighter-rouge">chromosome_name &lt;- 'chr02'</code></li>
+    <li><code class="language-plaintext highlighter-rouge">od_600_value &lt;- 0.47</code></li>
+    <li><code class="language-plaintext highlighter-rouge">chr_position &lt;- '1001701'</code></li>
+    <li><code class="language-plaintext highlighter-rouge">spock &lt;- TRUE</code></li>
+    <li><code class="language-plaintext highlighter-rouge">pilot &lt;- Earhart</code></li>
+  </ol>
+
+  <blockquote class="solution">
+    <h2 id="solution-1">Solution</h2>
+
+    <div class="language-plaintext error highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error in eval(expr, envir, enclos): object 'Earhart' not found
+</code></pre></div>    </div>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mode</span><span class="p">(</span><span class="n">chromosome_name</span><span class="p">)</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] "character"
+</code></pre></div>    </div>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mode</span><span class="p">(</span><span class="n">od_600_value</span><span class="p">)</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] "numeric"
+</code></pre></div>    </div>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mode</span><span class="p">(</span><span class="n">chr_position</span><span class="p">)</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] "character"
+</code></pre></div>    </div>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mode</span><span class="p">(</span><span class="n">spock</span><span class="p">)</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] "logical"
+</code></pre></div>    </div>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mode</span><span class="p">(</span><span class="n">pilot</span><span class="p">)</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <div class="language-plaintext error highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error in mode(pilot): object 'pilot' not found
+</code></pre></div>    </div>
+  </blockquote>
+</blockquote>
+
+<p>Notice from the solution that even if a series of numbers is given as a value
+R will consider them to be in the “character” mode if they are enclosed as
+single or double quotes. Also, notice that you cannot take a string of alphanumeric
+characters (e.g. Earhart) and assign as a value for an object. In this case,
+R looks for an object named <code class="language-plaintext highlighter-rouge">Earhart</code> but since there is no object, no assignment can
+be made. If <code class="language-plaintext highlighter-rouge">Earhart</code> did exist, then the mode of <code class="language-plaintext highlighter-rouge">pilot</code> would be whatever
+the mode of <code class="language-plaintext highlighter-rouge">Earhart</code> was originally. If we want to create an object
+called <code class="language-plaintext highlighter-rouge">pilot</code> that was the <strong>name</strong> “Earhart”, we need to enclose
+<code class="language-plaintext highlighter-rouge">Earhart</code> in quotation marks.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pilot</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"Earhart"</span><span class="w">
+</span><span class="n">mode</span><span class="p">(</span><span class="n">pilot</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] "character"
+</code></pre></div></div>
+
+<h2 id="mathematical-and-functional-operations-on-objects">Mathematical and functional operations on objects</h2>
+
+<p>Once an object exists (which by definition also means it has a mode), R can
+appropriately manipulate that object. For example, objects of the numeric modes
+can be added, multiplied, divided, etc. R provides several mathematical
+(arithmetic) operators including:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>+</td>
+      <td>addition</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>subtraction</td>
+    </tr>
+    <tr>
+      <td>*</td>
+      <td>multiplication</td>
+    </tr>
+    <tr>
+      <td>/</td>
+      <td>division</td>
+    </tr>
+    <tr>
+      <td>^ or **</td>
+      <td>exponentiation</td>
+    </tr>
+    <tr>
+      <td>a%/%b</td>
+      <td>integer division (division where the remainder is discarded)</td>
+    </tr>
+    <tr>
+      <td>a%%b</td>
+      <td>modulus (returns the remainder after division)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>These can be used with literal numbers:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="m">5</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="m">0.5</span><span class="p">))</span><span class="o">/</span><span class="m">2</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 1.618034
+</code></pre></div></div>
+
+<p>and importantly, can be used on any object that evaluates to (i.e. interpreted
+by R) a numeric object:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># multiply the object 'human_chr_number' by 2</span><span class="w">
+
+</span><span class="n">human_chr_number</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">2</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 46
+</code></pre></div></div>
+
+<blockquote class="challenge">
+  <h2 id="exercise-compute-the-golden-ratio">Exercise: Compute the golden ratio</h2>
+
+  <p>One approximation of the golden ratio (φ) can be found by taking the sum of 1
+and the square root of 5, and dividing by 2 as in the example above. Compute
+the golden ratio to 3 digits of precision using the <code class="language-plaintext highlighter-rouge">sqrt()</code> and <code class="language-plaintext highlighter-rouge">round()</code>
+functions. Hint: remember the <code class="language-plaintext highlighter-rouge">round()</code> function can take 2 arguments.</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-2">Solution</h2>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">round</span><span class="p">((</span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="m">5</span><span class="p">))</span><span class="o">/</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">digits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 1.618
+</code></pre></div>    </div>
+    <p>Notice that you can place one function inside of another.</p>
+  </blockquote>
+</blockquote>
+
+<h2 id="vectors">Vectors</h2>
+
+<p>Vectors are probably the
+most used commonly used object type in R. 
+<strong>A vector is a collection of values that are all of the same type (numbers, characters, etc.)</strong>. 
+One of the most common
+ways to create a vector is to use the <code class="language-plaintext highlighter-rouge">c()</code> function - the “concatenate” or
+“combine” function. Inside the function you may enter one or more values; for
+multiple values, separate each value with a comma:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Create the SNP gene name vector</span><span class="w">
+
+</span><span class="n">snp_genes</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"OXTR"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ACTN3"</span><span class="p">,</span><span class="w"> </span><span class="s2">"AR"</span><span class="p">,</span><span class="w"> </span><span class="s2">"OPRM1"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Vectors always have a <strong>mode</strong> and a <strong>length</strong>.
+You can check these with the <code class="language-plaintext highlighter-rouge">mode()</code> and <code class="language-plaintext highlighter-rouge">length()</code> functions respectively.
+Another useful function that gives both of these pieces of information is the
+<code class="language-plaintext highlighter-rouge">str()</code> (structure) function.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Check the mode, length, and structure of 'snp_genes'</span><span class="w">
+</span><span class="n">mode</span><span class="p">(</span><span class="n">snp_genes</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] "character"
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">length</span><span class="p">(</span><span class="n">snp_genes</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 4
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">str</span><span class="p">(</span><span class="n">snp_genes</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code> chr [1:4] "OXTR" "ACTN3" "AR" "OPRM1"
+</code></pre></div></div>
+
+<p>Vectors are quite important in R. Another data type that we will
+work with later in this lesson, data frames, are collections of
+vectors. What we learn here about vectors will pay off even more
+when we start working with data frames.</p>
+
+<h2 id="creating-and-subsetting-vectors">Creating and subsetting vectors</h2>
+
+<p>Let’s create a few more vectors to play around with:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Some interesting human SNPs</span><span class="w">
+</span><span class="c1"># while accuracy is important, typos in the data won't hurt you here</span><span class="w">
+
+</span><span class="n">snps</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s1">'rs53576'</span><span class="p">,</span><span class="w"> </span><span class="s1">'rs1815739'</span><span class="p">,</span><span class="w"> </span><span class="s1">'rs6152'</span><span class="p">,</span><span class="w"> </span><span class="s1">'rs1799971'</span><span class="p">)</span><span class="w">
+</span><span class="n">snp_chromosomes</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s1">'3'</span><span class="p">,</span><span class="w"> </span><span class="s1">'11'</span><span class="p">,</span><span class="w"> </span><span class="s1">'X'</span><span class="p">,</span><span class="w"> </span><span class="s1">'6'</span><span class="p">)</span><span class="w">
+</span><span class="n">snp_positions</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">8762685</span><span class="p">,</span><span class="w"> </span><span class="m">66560624</span><span class="p">,</span><span class="w"> </span><span class="m">67545785</span><span class="p">,</span><span class="w"> </span><span class="m">154039662</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Once we have vectors, one thing we may want to do is specifically retrieve one
+or more values from our vector. To do so, we use <strong>bracket notation</strong>. We type
+the name of the vector followed by square brackets. In those square brackets
+we place the index (e.g. a number) in that bracket as follows:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># get the 3rd value in the snp_genes vector</span><span class="w">
+</span><span class="n">snp_genes</span><span class="p">[</span><span class="m">3</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] "AR"
+</code></pre></div></div>
+
+<p>In R, every item your vector is indexed, starting from the first item (1)
+through to the final number of items in your vector. You can also retrieve a
+range of numbers:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># get the 1st through 3rd value in the snp_genes vector</span><span class="w">
+
+</span><span class="n">snp_genes</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] "OXTR"  "ACTN3" "AR"   
+</code></pre></div></div>
+
+<p>If you want to retrieve several (but not necessarily sequential) items from
+a vector, you pass a <strong>vector of indices</strong>; a vector that has the numbered
+positions you wish to retrieve.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># get the 1st, 3rd, and 4th value in the snp_genes vector</span><span class="w">
+
+</span><span class="n">snp_genes</span><span class="p">[</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">)]</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] "OXTR"  "AR"    "OPRM1"
+</code></pre></div></div>
+
+<p>There are additional (and perhaps less commonly used) ways of subsetting a
+vector (see <a href="https://thomasleeper.com/Rcourse/Tutorials/vectorindexing.html">these
+examples</a>).
+Also, several of these subsetting expressions can be combined:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># get the 1st through the 3rd value, and 4th value in the snp_genes vector</span><span class="w">
+</span><span class="c1"># yes, this is a little silly in a vector of only 4 values.</span><span class="w">
+</span><span class="n">snp_genes</span><span class="p">[</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">)]</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] "OXTR"  "ACTN3" "AR"    "OPRM1"
+</code></pre></div></div>
+
+<h2 id="adding-to-removing-or-replacing-values-in-existing-vectors">Adding to, removing, or replacing values in existing vectors</h2>
+
+<p>Once you have an existing vector, you may want to add a new item to it. To do
+so, you can use the <code class="language-plaintext highlighter-rouge">c()</code> function again to add your new value:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># add the gene 'CYP1A1' and 'APOA5' to our list of snp genes</span><span class="w">
+</span><span class="c1"># this overwrites our existing vector</span><span class="w">
+</span><span class="n">snp_genes</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">snp_genes</span><span class="p">,</span><span class="w"> </span><span class="s2">"CYP1A1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"APOA5"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>We can verify that “snp_genes” contains the new gene entry</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">snp_genes</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] "OXTR"   "ACTN3"  "AR"     "OPRM1"  "CYP1A1" "APOA5" 
+</code></pre></div></div>
+
+<p>Using a negative index will return a version of a vector with that index’s
+value removed:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">snp_genes</span><span class="p">[</span><span class="m">-6</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] "OXTR"   "ACTN3"  "AR"     "OPRM1"  "CYP1A1"
+</code></pre></div></div>
+
+<p>We can remove that value from our vector by overwriting it with this expression:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">snp_genes</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">snp_genes</span><span class="p">[</span><span class="m">-6</span><span class="p">]</span><span class="w">
+</span><span class="n">snp_genes</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] "OXTR"   "ACTN3"  "AR"     "OPRM1"  "CYP1A1"
+</code></pre></div></div>
+
+<p>We can also explicitly rename or add a value to our index using double bracket notation:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">snp_genes</span><span class="p">[</span><span class="m">7</span><span class="p">]</span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"APOA5"</span><span class="w">
+</span><span class="n">snp_genes</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] "OXTR"   "ACTN3"  "AR"     "OPRM1"  "CYP1A1" NA       "APOA5" 
+</code></pre></div></div>
+
+<p>Notice in the operation above that R inserts an <code class="language-plaintext highlighter-rouge">NA</code> value to extend our vector so that the gene “APOA5” is an index 7. This may be a good or not-so-good thing depending on how you use this.</p>
+
+<blockquote class="challenge">
+  <h2 id="exercise-examining-and-subsetting-vectors">Exercise: Examining and subsetting vectors</h2>
+  <p>Answer the following questions to test your knowledge of vectors</p>
+
+  <p>Which of the following are true of vectors in R?
+A) All vectors have a mode <strong>or</strong> a length<br />
+B) All vectors have a mode <strong>and</strong> a length<br />
+C) Vectors may have different lengths<br />
+D) Items within a vector may be of different modes<br />
+E) You can use the <code class="language-plaintext highlighter-rouge">c()</code> to one or more items to an existing vector<br />
+F) You can use the <code class="language-plaintext highlighter-rouge">c()</code> to add a vector to an exiting vector</p>
+  <blockquote class="solution">
+
+    <h2 id="solution-3">Solution</h2>
+
+    <p>A) False - Vectors have both of these properties<br />
+B) True<br />
+C) True<br />
+D) False - Vectors have only one mode (e.g. numeric, character); all items in<br />
+a vector must be of this mode.
+E) True<br />
+F) True</p>
+  </blockquote>
+</blockquote>
+
+<h2 id="logical-subsetting">Logical Subsetting</h2>
+
+<p>There is one last set of cool subsetting capabilities we want to introduce. It is possible within R to retrieve items in a vector based on a logical evaluation or numerical comparison. For example, let’s say we wanted get all of the SNPs in our vector of SNP positions that were greater than 100,000,000. We could index using the ‘&gt;’ (greater than) logical operator:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">snp_positions</span><span class="p">[</span><span class="n">snp_positions</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">100000000</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 154039662
+</code></pre></div></div>
+
+<p>In the square brackets you place the name of the vector followed by the comparison operator and (in this case) a numeric value. Some of the most common logical operators you will use in R are:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>&lt;</td>
+      <td>less than</td>
+    </tr>
+    <tr>
+      <td>&lt;=</td>
+      <td>less than or equal to</td>
+    </tr>
+    <tr>
+      <td>&gt;</td>
+      <td>greater than</td>
+    </tr>
+    <tr>
+      <td>&gt;=</td>
+      <td>greater than or equal to</td>
+    </tr>
+    <tr>
+      <td>==</td>
+      <td>exactly equal to</td>
+    </tr>
+    <tr>
+      <td>!=</td>
+      <td>not equal to</td>
+    </tr>
+    <tr>
+      <td>!x</td>
+      <td>not x</td>
+    </tr>
+    <tr>
+      <td>a | b</td>
+      <td>a or b</td>
+    </tr>
+    <tr>
+      <td>a &amp; b</td>
+      <td>a and b</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote class="callout">
+  <h2 id="the-magic-of-programming">The magic of programming</h2>
+
+  <p>The reason why the expression <code class="language-plaintext highlighter-rouge">snp_positions[snp_positions &gt; 100000000]</code> works
+can be better understood if you examine what the expression “snp_positions &gt; 100000000”
+evaluates to:</p>
+
+  <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">snp_positions</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">100000000</span><span class="w">
+</span></code></pre></div>  </div>
+
+  <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] FALSE FALSE FALSE  TRUE
+</code></pre></div>  </div>
+
+  <p>The output above is a logical vector, the 4th element of which is TRUE. When
+you pass a logical vector as an index, R will return the true values:</p>
+
+  <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">snp_positions</span><span class="p">[</span><span class="nf">c</span><span class="p">(</span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)]</span><span class="w">
+</span></code></pre></div>  </div>
+
+  <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 154039662
+</code></pre></div>  </div>
+
+  <p>If you have never coded before, this type of situation starts to expose the
+“magic” of programming. We mentioned before that in the bracket notation you
+take your named vector followed by brackets which contain an index:
+<strong>named_vector[index]</strong>. The “magic” is that the index needs to <em>evaluate to</em>
+a number. So, even if it does not appear to be an integer (e.g. 1, 2, 3), as
+long as R can evaluate it, we will get a result. That our expression
+<code class="language-plaintext highlighter-rouge">snp_positions[snp_positions &gt; 100000000]</code> evaluates to a number can be seen
+in the following situation. If you wanted to know which <strong>index</strong> (1, 2, 3, or
+4) in our vector of SNP positions was the one that was greater than
+100,000,000?</p>
+
+  <p>We can use the <code class="language-plaintext highlighter-rouge">which()</code> function to return the indices of any item that
+evaluates as TRUE in our comparison:</p>
+
+  <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">which</span><span class="p">(</span><span class="n">snp_positions</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">100000000</span><span class="p">)</span><span class="w">
+</span></code></pre></div>  </div>
+
+  <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 4
+</code></pre></div>  </div>
+
+  <p><strong>Why this is important</strong></p>
+
+  <p>Often in programming we will not know what inputs
+and values will be used when our code is executed. Rather than put in a
+pre-determined value (e.g 100000000) we can use an object that can take on
+whatever value we need. So for example:</p>
+
+  <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">snp_marker_cutoff</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">100000000</span><span class="w">
+</span><span class="n">snp_positions</span><span class="p">[</span><span class="n">snp_positions</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">snp_marker_cutoff</span><span class="p">]</span><span class="w">
+</span></code></pre></div>  </div>
+
+  <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 154039662
+</code></pre></div>  </div>
+
+  <p>Ultimately, it’s putting together flexible, reusable code like this that gets
+at the “magic” of programming!</p>
+</blockquote>
+
+<h2 id="a-few-final-vector-tricks">A few final vector tricks</h2>
+
+<p>Finally, there are a few other common retrieve or replace operations you may
+want to know about. First, you can check to see if any of the values of your
+vector are missing (i.e. are <code class="language-plaintext highlighter-rouge">NA</code>). Missing data will get a more detailed treatment later,
+but the <code class="language-plaintext highlighter-rouge">is.NA()</code> function will return a logical vector, with TRUE for any NA
+value:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># current value of 'snp_genes': </span><span class="w">
+</span><span class="c1"># chr [1:7] "OXTR" "ACTN3" "AR" "OPRM1" "CYP1A1" NA "APOA5"</span><span class="w">
+
+</span><span class="nf">is.na</span><span class="p">(</span><span class="n">snp_genes</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
+</code></pre></div></div>
+
+<p>Sometimes, you may wish to find out if a specific value (or several values) is
+present a vector. You can do this using the comparison operator <code class="language-plaintext highlighter-rouge">%in%</code>, which
+will return TRUE for any value in your collection that is in
+the vector you are searching:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># current value of 'snp_genes':</span><span class="w">
+</span><span class="c1"># chr [1:7] "OXTR" "ACTN3" "AR" "OPRM1" "CYP1A1" NA "APOA5"</span><span class="w">
+
+</span><span class="c1"># test to see if "ACTN3" or "APO5A" is in the snp_genes vector</span><span class="w">
+</span><span class="c1"># if you are looking for more than one value, you must pass this as a vector</span><span class="w">
+
+</span><span class="nf">c</span><span class="p">(</span><span class="s2">"ACTN3"</span><span class="p">,</span><span class="s2">"APOA5"</span><span class="p">)</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">snp_genes</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] TRUE TRUE
+</code></pre></div></div>
+
+<blockquote class="challenge">
+  <h2 id="review-exercise-1">Review Exercise 1</h2>
+
+  <p>What data types/modes are the following vectors?
+   a. <code class="language-plaintext highlighter-rouge">snps</code><br />
+   b. <code class="language-plaintext highlighter-rouge">snp_chromosomes</code><br />
+   c. <code class="language-plaintext highlighter-rouge">snp_positions</code></p>
+
+  <blockquote class="solution">
+    <h2 id="solution-4">Solution</h2>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">typeof</span><span class="p">(</span><span class="n">snps</span><span class="p">)</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] "character"
+</code></pre></div>    </div>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">typeof</span><span class="p">(</span><span class="n">snp_chromosomes</span><span class="p">)</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] "character"
+</code></pre></div>    </div>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">typeof</span><span class="p">(</span><span class="n">snp_positions</span><span class="p">)</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] "double"
+</code></pre></div>    </div>
+  </blockquote>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="review-exercise-2">Review Exercise 2</h2>
+
+  <p>Add the following values to the specified vectors:
+   a. To the <code class="language-plaintext highlighter-rouge">snps</code> vector add: ‘rs662799’<br />
+   b. To the <code class="language-plaintext highlighter-rouge">snp_chromosomes</code> vector add: 11<br />
+   c. To the <code class="language-plaintext highlighter-rouge">snp_positions</code> vector add: 	116792991</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-5">Solution</h2>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">snps</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">snps</span><span class="p">,</span><span class="w"> </span><span class="s1">'rs662799'</span><span class="p">)</span><span class="w">
+</span><span class="n">snps</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] "rs53576"   "rs1815739" "rs6152"    "rs1799971" "rs662799" 
+</code></pre></div>    </div>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">snp_chromosomes</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">snp_chromosomes</span><span class="p">,</span><span class="w"> </span><span class="s2">"11"</span><span class="p">)</span><span class="w"> </span><span class="c1"># did you use quotes?</span><span class="w">
+</span><span class="n">snp_chromosomes</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] "3"  "11" "X"  "6"  "11"
+</code></pre></div>    </div>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">snp_positions</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">snp_positions</span><span class="p">,</span><span class="w"> </span><span class="m">116792991</span><span class="p">)</span><span class="w">
+</span><span class="n">snp_positions</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1]   8762685  66560624  67545785 154039662 116792991
+</code></pre></div>    </div>
+  </blockquote>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="review-exercise-3">Review Exercise 3</h2>
+  <p>Make the following change to the <code class="language-plaintext highlighter-rouge">snp_genes</code> vector:</p>
+
+  <p>Hint: Your vector should look like this in ‘Environment’:
+<code class="language-plaintext highlighter-rouge">chr [1:7] "OXTR" "ACTN3" "AR" "OPRM1" "CYP1A1" NA "APOA5"</code>. If not
+recreate the vector by running this expression:
+<code class="language-plaintext highlighter-rouge">snp_genes &lt;- c("OXTR", "ACTN3", "AR", "OPRM1", "CYP1A1", NA, "APOA5")</code></p>
+
+  <p>a. Create a new version of <code class="language-plaintext highlighter-rouge">snp_genes</code> that does not contain CYP1A1 and then<br />
+   b. Add 2 NA values to the end of <code class="language-plaintext highlighter-rouge">snp_genes</code></p>
+
+  <blockquote class="solution">
+    <h2 id="solution-6">Solution</h2>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">snp_genes</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">snp_genes</span><span class="p">[</span><span class="m">-5</span><span class="p">]</span><span class="w">
+</span><span class="n">snp_genes</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">snp_genes</span><span class="p">,</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="kc">NA</span><span class="p">)</span><span class="w">
+</span><span class="n">snp_genes</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] "OXTR"  "ACTN3" "AR"    "OPRM1" NA      "APOA5" NA      NA     
+</code></pre></div>    </div>
+  </blockquote>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="review-exercise-4">Review Exercise 4</h2>
+
+  <p>Using indexing, create a new vector named <code class="language-plaintext highlighter-rouge">combined</code> that contains:</p>
+  <ul>
+    <li>The the 1st value in <code class="language-plaintext highlighter-rouge">snp_genes</code></li>
+    <li>The 1st value in <code class="language-plaintext highlighter-rouge">snps</code></li>
+    <li>The 1st value in <code class="language-plaintext highlighter-rouge">snp_chromosomes</code></li>
+    <li>The 1st value in <code class="language-plaintext highlighter-rouge">snp_positions</code></li>
+  </ul>
+
+  <blockquote class="solution">
+    <h2 id="solution-7">Solution</h2>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">combined</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">snp_genes</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="n">snps</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="n">snp_chromosomes</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="n">snp_positions</span><span class="p">[</span><span class="m">1</span><span class="p">])</span><span class="w">
+</span><span class="n">combined</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] "OXTR"    "rs53576" "3"       "8762685"
+</code></pre></div>    </div>
+  </blockquote>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="review-exercise-5">Review Exercise 5</h2>
+  <p>What type of data is <code class="language-plaintext highlighter-rouge">combined</code>?</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-8">Solution</h2>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">typeof</span><span class="p">(</span><span class="n">combined</span><span class="p">)</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] "character"
+</code></pre></div>    </div>
+  </blockquote>
+</blockquote>
+
+<h2 id="bonus-material-lists">Bonus material: Lists</h2>
+
+<p>Lists are quite useful in R, but we won’t be using them in the genomics lessons.
+That said, you may come across lists in the way that some bioinformatics
+programs may store and/or return data to you. One of the key attributes of a
+list is that, unlike a vector, a list may contain data of more than one mode.
+Learn more about creating and using lists using this <a href="https://r4ds.had.co.nz/vectors.html#lists">nice
+tutorial</a>. In this one example, we will create
+a named list and show you how to retrieve items from the list.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Create a named list using the 'list' function and our SNP examples</span><span class="w">
+</span><span class="c1"># Note, for easy reading we have placed each item in the list on a separate line</span><span class="w">
+</span><span class="c1"># Nothing special about this, you can do this for any multiline commands</span><span class="w">
+</span><span class="c1"># To run this command, make sure the entire command (all 4 lines) are highlighted</span><span class="w">
+</span><span class="c1"># before running</span><span class="w">
+</span><span class="c1"># Note also, as we are doing all this inside the list() function use of the</span><span class="w">
+</span><span class="c1"># '=' sign is good style</span><span class="w">
+</span><span class="n">snp_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">genes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">snp_genes</span><span class="p">,</span><span class="w">
+                 </span><span class="n">refference_snp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">snps</span><span class="p">,</span><span class="w">
+                 </span><span class="n">chromosome</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">snp_chromosomes</span><span class="p">,</span><span class="w">
+                 </span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">snp_positions</span><span class="p">)</span><span class="w">
+</span><span class="c1"># Examine the structure of the list</span><span class="w">
+</span><span class="n">str</span><span class="p">(</span><span class="n">snp_data</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>List of 4
+ $ genes         : chr [1:8] "OXTR" "ACTN3" "AR" "OPRM1" ...
+ $ refference_snp: chr [1:5] "rs53576" "rs1815739" "rs6152" "rs1799971" ...
+ $ chromosome    : chr [1:5] "3" "11" "X" "6" ...
+ $ position      : num [1:5] 8.76e+06 6.66e+07 6.75e+07 1.54e+08 1.17e+08
+</code></pre></div></div>
+
+<p>To get all the values for the <code class="language-plaintext highlighter-rouge">position</code> object in the list, we use the <code class="language-plaintext highlighter-rouge">$</code> notation:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># return all the values of position object</span><span class="w">
+
+</span><span class="n">snp_data</span><span class="o">$</span><span class="n">position</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1]   8762685  66560624  67545785 154039662 116792991
+</code></pre></div></div>
+
+<p>To get the first value in the <code class="language-plaintext highlighter-rouge">position</code> object, use the <code class="language-plaintext highlighter-rouge">[]</code> notation to index:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># return first value of the position object</span><span class="w">
+
+</span><span class="n">snp_data</span><span class="o">$</span><span class="n">position</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 8762685
+</code></pre></div></div>
+
+
+
+
+
+<blockquote class="keypoints">
+  <h2>Key Points</h2>
+  <ul>
+    
+    <li><p>Effectively using R is a journey of months or years. Still you don’t have to be an expert to use R and you can start using and analyzing your data with with about a day’s worth of training</p>
+</li>
+    
+    <li><p>It is important to understand how data are organized by R in a given object type and how the mode of that type (e.g. numeric, character, logical, etc.) will determine how R will operate on that data.</p>
+</li>
+    
+    <li><p>Working with vectors effectively prepares you for understanding how data are organized in R.</p>
+</li>
+    
+  </ul>
+</blockquote>
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+  <div class="col-xs-1">
+    <h3 class="text-left">
+      
+      <a href="../01-introduction/index.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-xs-10">
+    
+  </div>
+  <div class="col-xs-1">
+    <h3 class="text-right">
+      
+      <a href="../03-basics-factors-dataframes/index.html"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      
+    </h3>
+  </div>
+</div>
+
+
+
+      
+      
+
+
+
+
+
+
+<footer>
+  <hr/>
+  <div class="row">
+    <div class="col-md-6 license" id="license-info" align="left">
+	
+	Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> 2018–2020
+	by <a href="https://carpentries.org/">The Carpentries</a>
+        <br>
+        Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> 2016–2018
+	by <a href="http://datacarpentry.org">Data Carpentry</a>
+	
+    </div>
+    <div class="col-md-6 help-links" align="right">
+	
+	
+	<a href="/edit//_episodes_rmd/02-r-basics.Rmd" data-checker-ignore>Edit on GitHub</a>
+	
+	
+	/
+	<a href="/blob//CONTRIBUTING.md" data-checker-ignore>Contributing</a>
+	/
+	<a href="/">Source</a>
+	/
+	<a href="/blob//CITATION" data-checker-ignore>Cite</a>
+	/
+	<a href="mailto:team@carpentries.org">Contact</a>
+    </div>
+  </div>
+  <p class="text-muted text-right">
+    <small><i>Using <a href="https://github.com/carpentries/carpentries-theme/">The Carpentries theme</a> &mdash; Site last built on: 2020-12-18 15:56:59 +0000.</i></small>
+  </p>
+</footer>
+
+      
+    </div>
+    
+<script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/lesson.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37305346-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>
