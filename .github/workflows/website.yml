@@ -94,9 +94,10 @@ jobs:
       - name: Push site
         #if: ${{ github.event.push == 'true' && steps.check-rmd.outputs.count != 0 && github.ref == 'refs/heads/main' }}
         run: |
+          ls -la _episodes
           rm -rf .github/
           rm -rf .bundle/
-          git add .
+          git add --force .
           git commit -m "[GitHub Actions] render website"
           git push --force origin +gha-rendering:gh-pages
 
